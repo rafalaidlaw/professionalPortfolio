@@ -239,27 +239,31 @@ function App() {
                 Fill out the form below and I'll get back to you as soon as possible.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">Name</label>
-                  <Input id="name" placeholder="Your name" />
+            <CardContent>
+              <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success" className="space-y-4">
+                <input type="hidden" name="form-name" value="contact" />
+                <div className="hidden">
+                  <input name="bot-field" />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium">Name</label>
+                    <Input id="name" name="name" placeholder="Your name" required />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium">Email</label>
+                    <Input id="email" name="email" type="email" placeholder="your.email@example.com" required />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">Email</label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" />
+                  <label htmlFor="message" className="text-sm font-medium">Message</label>
+                  <Textarea id="message" name="message" placeholder="Your message..." className="min-h-[120px]" required />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">Message</label>
-                <Textarea id="message" placeholder="Your message..." className="min-h-[120px]" />
-              </div>
-              <Button className="w-full" asChild>
-                <a href="mailto:rafalaidlaw@gmail.com?subject=Portfolio Contact - New Message&body=Hello Rafael,%0D%0A%0D%0AI'm interested in connecting with you regarding your work.%0D%0A%0D%0ABest regards,">
+                <Button type="submit" className="w-full">
                   <Mail className="mr-2 h-4 w-4" />
                   Send Message
-                </a>
-              </Button>
+                </Button>
+              </form>
             </CardContent>
           </Card>
         </div>
