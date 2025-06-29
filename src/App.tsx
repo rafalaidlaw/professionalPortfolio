@@ -9,89 +9,79 @@ import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail, Download, Code, Palette, Smartphone } from "lucide-react"
 
 function App() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="border-b">
         <div className="container mx-auto px-4 py-4">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Portfolio</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid gap-3 p-4 w-[400px]">
-                    <NavigationMenuLink asChild>
-                      <a href="#about" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">About</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Learn more about my background and experience.
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <a href="#projects" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Projects</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          View my latest work and projects.
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <a href="#contact" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Contact</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Get in touch with me.
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col">
+              <span className="text-xl font-bold leading-tight ubuntu-font text-stroke" style={{ color: '#ededed' }}>Rafael Laidlaw</span>
+              <span className="text-base font-semibold leading-tight ubuntu-font tracking-wide -mt-1 self-center" style={{ color: '#c2c3c7' }}>Web Developer</span>
+            </div>
+            <NavigationMenu>
+              <NavigationMenuList className="flex gap-6">
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <button 
+                      onClick={() => scrollToSection('about')} 
+                      className="text-sm font-medium transition-colors hover:text-primary bg-transparent border-none cursor-pointer"
+                    >
+                      About
+                    </button>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <button 
+                      onClick={() => scrollToSection('projects')} 
+                      className="text-sm font-medium transition-colors hover:text-primary bg-transparent border-none cursor-pointer"
+                    >
+                      Projects
+                    </button>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <button 
+                      onClick={() => scrollToSection('contact')} 
+                      className="text-sm font-medium transition-colors hover:text-primary bg-transparent border-none cursor-pointer"
+                    >
+                      Contact
+                    </button>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="flex flex-col items-center text-center space-y-8">
-          <Avatar className="h-32 w-32 border-4 border-primary/10">
-            <AvatarImage src="" alt="Profile" />
-            <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-primary to-primary/60 text-primary-foreground">
+      <section id="about" className="container mx-auto px-4 py-16">
+        <div className="flex items-center gap-8">
+          <Avatar className="h-32 w-24 rounded-none">
+            <AvatarImage src="/skillcube_20-grey.gif" alt="Profile" className="h-32 w-24 object-contain rounded-none" />
+            <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-primary to-primary/60 text-primary-foreground rounded-none">
               RL
             </AvatarFallback>
           </Avatar>
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight">Rafael Laidlaw</h1>
-            <p className="text-xl text-muted-foreground">Web Developer</p>
-            <p className="text-lg max-w-2xl">
-              Web Developer specializing in Redux, TypeScript, Phaser, NextJS, Angular, and Node.js. 
-              Creating engaging web experiences and interactive applications with modern technologies.
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold tracking-tight">Rafael Laidlaw</h1>
+            <p className="text-lg text-muted-foreground font-medium">Web Developer</p>
+            <p className="text-base max-w-xl leading-snug">
+              Web Developer specializing in Redux, TypeScript, Phaser, NextJS, Angular, and Node.js. Creating engaging web experiences and interactive applications with modern technologies.
             </p>
-          </div>
-          <div className="flex gap-4">
-            <Button asChild>
-              <a href="/Rafael_Laidlaw_Resume_2025.pdf" target="_blank" rel="noopener noreferrer">
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
-            <Button variant="outline" asChild>
-              <a href="#contact">
-                <Mail className="mr-2 h-4 w-4" />
-                Contact Me
-              </a>
-            </Button>
-          </div>
-          <div className="flex gap-4">
-            <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com/rafalaidlaw" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Linkedin className="h-4 w-4" />
-            </Button>
           </div>
         </div>
       </section>
@@ -176,8 +166,10 @@ function App() {
                   <Badge variant="secondary">Node.js</Badge>
                   <Badge variant="secondary">MongoDB</Badge>
                 </div>
-                <Button variant="outline" className="w-full">
-                  View Project
+                <Button variant="outline" className="w-full" asChild>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    View Project
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -194,8 +186,10 @@ function App() {
                   <Badge variant="secondary">Socket.io</Badge>
                   <Badge variant="secondary">PostgreSQL</Badge>
                 </div>
-                <Button variant="outline" className="w-full">
-                  View Project
+                <Button variant="outline" className="w-full" asChild>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    View Project
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -212,13 +206,15 @@ function App() {
                   <Badge variant="secondary">Tailwind CSS</Badge>
                   <Badge variant="secondary">Vite</Badge>
                 </div>
-                <Button variant="outline" className="w-full">
-                  View Project
+                <Button variant="outline" className="w-full" asChild>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    View Project
+                  </a>
                 </Button>
               </CardContent>
             </Card>
           </div>
-        </div>
+    </div>
       </section>
 
       <Separator />
@@ -230,8 +226,8 @@ function App() {
             <h2 className="text-3xl font-bold">Get In Touch</h2>
             <p className="text-muted-foreground">
               I'm always interested in new opportunities and exciting projects.
-            </p>
-          </div>
+        </p>
+      </div>
           <Card>
             <CardHeader>
               <CardTitle>Send me a message</CardTitle>
@@ -273,7 +269,7 @@ function App() {
       <footer className="border-t py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-muted-foreground">
-            © 2024 John Doe. Built with React, TypeScript, and shadcn/ui.
+            © 2024 Rafael Laidlaw. Built with React, TypeScript, and shadcn/ui.
           </p>
         </div>
       </footer>

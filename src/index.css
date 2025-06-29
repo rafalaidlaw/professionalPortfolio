@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -43,7 +44,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #ededed;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -116,5 +117,19 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* font-family: 'Ubuntu', sans-serif !important; */
   }
+}
+
+.ubuntu-font {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 0.5px #55575b;
+  text-stroke: 0.5px #55575b;
+}
+
+.navbar-dark {
+  color: #55575b !important;
 }
