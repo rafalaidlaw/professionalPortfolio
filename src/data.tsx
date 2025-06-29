@@ -9,7 +9,6 @@ import {
   FaGit,
   FaMarkdown,
   FaBootstrap,
-  FaCss3,
 } from "react-icons/fa";
 
 export const links = [

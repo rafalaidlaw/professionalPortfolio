@@ -1,4 +1,5 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
+import { Github, Linkedin } from "lucide-react";
 
 function scrollToSection(sectionId: string) {
   const element = document.getElementById(sectionId);
@@ -51,6 +52,34 @@ export default function Navbar() {
                   >
                     Contact
                   </button>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <a 
+                    href="https://github.com/rafalaidlaw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-lg font-semibold tracking-wide transition-colors hover:text-primary bg-transparent border-none cursor-pointer ubuntu-font" 
+                    style={{ color: '#888a8f' }}
+                  >
+                    <Github size={20} />
+                  </a>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <a 
+                    href="https://www.linkedin.com/in/rafalaidlaw/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-lg font-semibold tracking-wide transition-colors hover:text-primary bg-transparent border-none cursor-pointer ubuntu-font" 
+                    style={{ color: '#888a8f' }}
+                  >
+                    <Linkedin size={20} />
+                  </a>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>

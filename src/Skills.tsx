@@ -1,5 +1,4 @@
-import { skills } from "./data.jsx";
-import SkillsCard from "./SkillsCard";
+import { skills } from "./data.tsx";
 import React from "react";
 
 interface Skill {
