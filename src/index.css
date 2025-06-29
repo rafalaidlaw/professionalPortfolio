@@ -126,10 +126,146 @@
 }
 
 .text-stroke {
-  -webkit-text-stroke: 0.5px #55575b;
-  text-stroke: 0.5px #55575b;
+  -webkit-text-stroke: 0.5px #c2c3c7;
+  text-stroke: 0.5px #c2c3c7;
 }
 
 .navbar-dark {
   color: #55575b !important;
+}
+
+.hover-icon {
+  width: 3rem;
+  height: 2rem;
+  color: white;
+  fill: white;
+  transition: all 0.3s ease;
+  border: 3px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.25rem;
+  background: #c2c3c7;
+}
+
+.hover-icon:hover {
+  color: #55575b;
+  fill: #55575b;
+  border-color: #d1d5db;
+  background: white;
+}
+
+/* Specific styling for react-icons Font Awesome components */
+.hover-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.hover-icon:hover svg {
+  fill: currentColor;
+}
+
+/* Gradient Border Utilities */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 0.5rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  border-radius: 0.625rem;
+  z-index: -1;
+}
+
+.gradient-border-blue {
+  position: relative;
+  background: white;
+  border-radius: 0.5rem;
+}
+
+.gradient-border-blue::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  border-radius: 0.625rem;
+  z-index: -1;
+}
+
+.gradient-border-purple {
+  position: relative;
+  background: white;
+  border-radius: 0.5rem;
+}
+
+.gradient-border-purple::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 0.625rem;
+  z-index: -1;
+}
+
+.gradient-border-green {
+  position: relative;
+  background: white;
+  border-radius: 0.5rem;
+}
+
+.gradient-border-green::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 0.625rem;
+  z-index: -1;
+}
+
+/* Animated gradient border */
+.gradient-border-animated {
+  position: relative;
+  background: white;
+  border-radius: 0.5rem;
+}
+
+.gradient-border-animated::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #667eea);
+  background-size: 400% 400%;
+  border-radius: 0.625rem;
+  z-index: -1;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
