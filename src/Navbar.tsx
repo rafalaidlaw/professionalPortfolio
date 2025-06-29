@@ -9,7 +9,7 @@ function scrollToSection(sectionId: string) {
 
 export default function Navbar() {
   return (
-    <nav className="border-2 border-solid m-2 p-2 border-[#c2c3c7]">
+    <nav className="mb-2 ml-2 mr-2 p-2">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
@@ -56,6 +56,9 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
+      </div>
+      <div className="flex justify-center">
+        <div className="w-[98%] -m-1 h-0.5 bg-[#c2c3c7]"></div>
       </div>
     </nav>
   );

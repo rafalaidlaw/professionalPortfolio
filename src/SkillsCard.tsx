@@ -1,4 +1,12 @@
-const SkillsCard = ({ icon, title, text }) => {
+import React from "react";
+
+interface SkillsCardProps {
+  icon: React.ReactNode;
+  title?: string;
+  text?: string;
+}
+
+const SkillsCard: React.FC<SkillsCardProps> = ({ icon, title, text }) => {
   return (
     <article className="hover:text-orange-900 duration-300">
       <span>{icon}</span>
@@ -7,4 +15,4 @@ const SkillsCard = ({ icon, title, text }) => {
     </article>
   );
 };
-export default SkillsCard;
+export default SkillsCard; 

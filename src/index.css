@@ -269,3 +269,31 @@
     background-position: 0% 50%;
   }
 }
+
+/* Skewed, overlapping button styles for Open Source section */
+.skew-btn-group .skew-btn {
+  transform: skew(-20deg);
+  display: inline-block;
+  position: relative;
+  margin-right: -2rem;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.skew-btn-group .skew-btn:last-child {
+  margin-right: 0;
+}
+.skew-btn-inner {
+  display: inline-block;
+  transform: skew(20deg);
+}
+.skew-btn {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+.skew-btn:focus, .skew-btn:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+  z-index: 100 !important;
+}

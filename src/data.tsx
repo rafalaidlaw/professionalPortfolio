@@ -217,30 +217,3 @@ export const skills = [
     text: "XML, structuring and managing hierarchical data for data interchange and integration across systems, ensuring compatibility and maintainability in web and enterprise applications.",
   },
 ];
-
-export const projects = [
-  {
-    id: nanoid(),
-    img: "./src/assets/Retro_Mod_Site.gif",
-    url: "https://cosmic-seahorse-cfa092.netlify.app/",
-    github: "https://github.com/rafalaidlaw",
-    title: "React E-Commerce Website",
-    text: "Hover",
-  },
-  // {
-  //   id: nanoid(),
-  //   img: "https://i.ibb.co/jwD0g16/Rafa-Bale-Developer-Reel.gif",
-  //   url: "https://vimeo.com/950854029",
-  //   github: "https://github.com/rafalaidlaw",
-  //   title: "Internet Advertisments",
-  //   text: "These banner ads were built with Javascript. All movements, ease-outs, and effects.  We did this to save on memory and to quickly implement and update multiple iterations for evolving ad campaigns. With reusable and sustainable code we could create many ads with minor tweaks.",
-  // },
-  // {
-  //   id: nanoid(),
-  //   img: "https://images.pexels.com/photos/12883026/pexels-photo-12883026.jpeg?auto=compress&cs=tinysrgb&w=800",
-  //   url: "https://react-projects.netlify.app/",
-  //   github: "https://github.com/john-smilga",
-  //   title: "third project",
-  //   text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores aperiam porro impedit tenetur quo hic omnis doloribus dolores enim deleniti.",
-  // },
-];

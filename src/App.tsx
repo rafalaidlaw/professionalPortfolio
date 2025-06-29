@@ -10,11 +10,12 @@ import { Github, Linkedin, Mail, Download, Code, Palette, Smartphone } from "luc
 import Navbar from "./Navbar"
 import About from "./About.tsx"
 import { useState } from "react"
+import OpenSource from "./OpenSource"
 
 function App() {
   const [hoverText, setHoverText] = useState("Web Developer working in JavaScript, React, TypeScript, Tailwind, GraphQL, Redux, CSS and Firebase.");
 
-  const handleMouseEnter = (text) => {
+  const handleMouseEnter = (text: string) => {
     setHoverText(text);
   };
 
@@ -41,73 +42,18 @@ function App() {
       <Separator />
 
       {/* Skills Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="text-center space-y-8">
-          <h2 className="text-3xl font-bold">Skills & Technologies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Code className="h-5 w-5" />
-                  Frontend
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  <Badge>React</Badge>
-                  <Badge>Redux</Badge>
-                  <Badge>TypeScript</Badge>
-                  <Badge>NextJS</Badge>
-                  <Badge>Angular</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Palette className="h-5 w-5" />
-                  Game Development
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  <Badge>Phaser</Badge>
-                  <Badge>HTML5 Canvas</Badge>
-                  <Badge>Game Design</Badge>
-                  <Badge>Interactive Media</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Smartphone className="h-5 w-5" />
-                  Backend & Tools
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  <Badge>Node.js</Badge>
-                  <Badge>JavaScript</Badge>
-                  <Badge>Git</Badge>
-                  <Badge>VSCode</Badge>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <OpenSource />
 
       <Separator />
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto px-4 py-20">
+      <section id="projects" className="container mx-auto px-4 py-12">
         <div className="text-center space-y-8">
-          <h2 className="text-3xl font-bold">Featured Projects</h2>
+          <h2 className="text-3xl font-bold ubuntu-font" style={{ color: '#55575b' }}>Featured Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card>
               <CardHeader>
-                <CardTitle>E-Commerce Platform</CardTitle>
+                <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>E-Commerce Platform</CardTitle>
                 <CardDescription>
                   A modern e-commerce platform built with React and Node.js
                 </CardDescription>
@@ -127,7 +73,7 @@ function App() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Task Management App</CardTitle>
+                <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Task Management App</CardTitle>
                 <CardDescription>
                   A collaborative task management application with real-time updates
                 </CardDescription>
@@ -147,7 +93,7 @@ function App() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Portfolio Website</CardTitle>
+                <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Portfolio Website</CardTitle>
                 <CardDescription>
                   A responsive portfolio website built with modern web technologies
                 </CardDescription>
@@ -166,7 +112,7 @@ function App() {
               </CardContent>
             </Card>
           </div>
-    </div>
+        </div>
       </section>
 
       <Separator />
@@ -175,14 +121,14 @@ function App() {
       <section id="contact" className="container mx-auto px-4 py-20">
         <div className="max-w-2xl mx-auto space-y-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold">Get In Touch</h2>
+            <h2 className="text-3xl font-bold ubuntu-font" style={{ color: '#55575b' }}>Get In Touch</h2>
             <p className="text-muted-foreground">
               I'm always interested in new opportunities and exciting projects.
         </p>
       </div>
           <Card>
             <CardHeader>
-              <CardTitle>Send me a message</CardTitle>
+              <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Send me a message</CardTitle>
               <CardDescription>
                 Fill out the form below and I'll get back to you as soon as possible.
               </CardDescription>
