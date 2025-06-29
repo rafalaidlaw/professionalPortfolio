@@ -1,5 +1,3 @@
-import React from "react";
-
 const openSourceButtons = [
   { label: "Altair GraphQL", color: "bg-gray-300 text-gray-400" },
   { label: "Godot Engine", color: "bg-gray-400 text-gray-300" },
