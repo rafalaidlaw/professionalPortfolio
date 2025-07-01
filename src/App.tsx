@@ -8,7 +8,9 @@ import { Mail} from "lucide-react"
 import Navbar from "./Navbar"
 import About from "./About.tsx"
 import { useState } from "react"
-import OpenSource from "./OpenSource"
+import Games from "./Games"
+import FeaturedProjects from "./FeaturedProjects"
+import ECommerceFeature from "./ECommerceFeature"
 
 function App() {
   const [hoverText, setHoverText] = useState("Web Developer working in JavaScript, React, TypeScript, Tailwind, GraphQL, Redux, CSS and Firebase.");
@@ -27,83 +29,16 @@ function App() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <About hoverText={hoverText} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-
-      <Separator />
-
-      {/* Skills Section */}
-      <OpenSource />
+      <About />
 
       <Separator />
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto px-4 py-12">
-        <div className="text-center space-y-8">
-          <h2 className="text-3xl font-bold ubuntu-font" style={{ color: '#55575b' }}>Featured Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>E-Commerce Platform</CardTitle>
-                <CardDescription>
-                  A modern e-commerce platform built with React and Node.js
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Node.js</Badge>
-                  <Badge variant="secondary">MongoDB</Badge>
-                </div>
-                <Button variant="outline" className="w-full" asChild>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    View Project
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Task Management App</CardTitle>
-                <CardDescription>
-                  A collaborative task management application with real-time updates
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="secondary">TypeScript</Badge>
-                  <Badge variant="secondary">Socket.io</Badge>
-                  <Badge variant="secondary">PostgreSQL</Badge>
-                </div>
-                <Button variant="outline" className="w-full" asChild>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    View Project
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Portfolio Website</CardTitle>
-                <CardDescription>
-                  A responsive portfolio website built with modern web technologies
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Tailwind CSS</Badge>
-                  <Badge variant="secondary">Vite</Badge>
-                </div>
-                <Button variant="outline" className="w-full" asChild>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    View Project
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <FeaturedProjects />
+
+      <Separator />
+
+      <Games />
 
       <Separator />
 
@@ -151,6 +86,16 @@ function App() {
             </CardContent>
           </Card>
         </div>
+      </section>
+
+      {/* Boring Section */}
+      <section id="boring" className="container mx-auto px-4 py-12 flex flex-col items-center justify-center">
+        <a
+          href="https://rafaellaidlawportfolio.netlify.app/"
+          className="mt-8 inline-block px-6 py-3 rounded-lg bg-gray-200 text-gray-700 font-semibold text-sm shadow hover:bg-gray-300 transition-colors text-center"
+        >
+          Think the site needs color? Click here to make it snazzy.
+        </a>
       </section>
 
       {/* Footer */}

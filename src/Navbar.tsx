@@ -1,5 +1,6 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { Github, Linkedin } from "lucide-react";
+import { MdOutlineVideogameAsset } from "react-icons/md";
 
 function scrollToSection(sectionId: string) {
   const element = document.getElementById(sectionId);
@@ -10,7 +11,7 @@ function scrollToSection(sectionId: string) {
 
 export default function Navbar() {
   return (
-    <nav className="mb-2 ml-2 mr-2 p-2">
+    <nav className=" ml-2 mr-2 p-2">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
@@ -18,7 +19,7 @@ export default function Navbar() {
             <span className="text-base font-semibold leading-tight ubuntu-font tracking-wide -mt-1 self-center" style={{ color: '#b0b2b8' }}>Web Developer</span>
           </div>
           <NavigationMenu>
-            <NavigationMenuList className="flex gap-6">
+            <NavigationMenuList className="flex gap-4">
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <button 
@@ -51,6 +52,18 @@ export default function Navbar() {
                     style={{ color: '#888a8f' }}
                   >
                     Contact
+                  </button>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <button 
+                    onClick={() => scrollToSection('games')} 
+                    className="text-lg font-semibold tracking-wide transition-colors hover:text-primary bg-transparent border-none cursor-pointer ubuntu-font flex items-center gap-1" 
+                    style={{ color: '#888a8f' }}
+                  >
+                    <MdOutlineVideogameAsset size={20} />
                   </button>
                 </NavigationMenuLink>
               </NavigationMenuItem>
