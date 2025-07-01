@@ -1,6 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import React from "react";
 
 const openSourceProjects = [
   { label: "Altair GraphQL", desc: "Implemented search functionality for parsing collections." },
