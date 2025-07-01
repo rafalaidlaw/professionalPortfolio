@@ -3,18 +3,18 @@ import React from "react";
 export const GridAd = ({ img, still }) => {
   return (
     <div>
-      <article className=" p-1">
-        <div className="border-b-2 border-gray-700">
-          <div className="border-t-2 border-gray-500">
-            <div className="border-l-2 border-gray-600">
-              <div className="border-r-2 border-gray-600">
-                <div className="border-b-2 border-gray-700">
-                  <div className="border-t-2 border-gray-500">
-                    <div className="border-l-2 border-gray-600">
-                      <div className="border-r-2 border-gray-600">
-                        <div className="border-b-2 border-gray-700">
-                          <div className="border-t-2 border-gray-500">
-                            <div className=" relative">
+      <article className="p-1">
+        <div>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <div className="relative">
                               <div className="bg-gray-400">
                                 <img
                                   src={still}
