@@ -1,4 +1,3 @@
-import React from "react";
 import ECommerceFeature from "./ECommerceFeature";
 import OpenSourceCard from "./OpenSourceCard";
 import OutlierAICard from "./OutlierAICard";
