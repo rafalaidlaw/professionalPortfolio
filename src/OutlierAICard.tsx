@@ -1,5 +1,4 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import React from "react";
 
 const OutlierAICard = () => (
   <Card className="relative">
