@@ -9,12 +9,12 @@ const OutlierAICard = () => (
         <CardDescription className="whitespace-normal leading-normal text-base mb-2">
           Evaluate JavaScript-related datasets to train machine learning models for code understanding and analysis. My role includes annotating code snippets, identifying patterns, and creating training scenarios that help improve model performance.
         </CardDescription>
-        <img
+                <img
           src="/favicon-32x32.svg"
-          alt="Outlier AI Logo"
+                  alt="Outlier AI Logo"
           className="w-8 h-8 -mb-10 cursor-pointer"
-          style={{ filter: 'grayscale(1)', transform: 'scale(0.8)' }}
-        />
+                  style={{ filter: 'grayscale(1)', transform: 'scale(0.8)' }}
+                />
       </div>
     </CardHeader>
     <CardContent>
