@@ -1,3 +1,4 @@
+import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Skills from "./Skills"
 import { useState } from "react"
