@@ -10,7 +10,7 @@ const OutlierAICard = () => (
           Evaluate JavaScript-related datasets to train machine learning models for code understanding and analysis. My role includes annotating code snippets, identifying patterns, and creating training scenarios that help improve model performance.
         </CardDescription>
         <img
-          src="/src/assets/favicon-32x32.svg"
+          src="/favicon-32x32.svg"
           alt="Outlier AI Logo"
           className="w-8 h-8 -mb-10 cursor-pointer"
           style={{ filter: 'grayscale(1)', transform: 'scale(0.8)' }}

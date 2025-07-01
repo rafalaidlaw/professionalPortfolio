@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Mail } from "lucide-react"
 import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
+import InternetBanner from "./InternetBanner"
 
 function App() {
   return (
@@ -91,6 +92,7 @@ function App() {
           </p>
         </div>
       </footer>
+      <InternetBanner />
     </div>
   )
 }

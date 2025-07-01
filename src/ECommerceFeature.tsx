@@ -66,7 +66,7 @@ const ECommerceFeature = () => {
             {/* Details */}
             <div className="w-full md:w-1/2 flex flex-col justify-between">
               <div>
-                <div className="text-lg text-muted-foreground font-medium text-center">MADE WITH</div>
+                <div className="text-xs text-muted-foreground font-medium text-center pb-1 ubuntu-font font-bold">MADE WITH</div>
                 <div className="flex flex-col gap-1 w-full mb-4">
                   <div className="flex gap-1 w-full">
                     {["React", "TypeScript"].map((label) => (
