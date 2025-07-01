@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { FaItchIo } from "react-icons/fa";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle,  } from "@/components/ui/card";
 
 const games = [
   {
@@ -44,7 +43,6 @@ const Games = () => {
   const displayHeight = Math.round(maxHeight / 2);
   const scale = displayHeight / game.height;
   const maxWidth = Math.max(...games.map(g => g.width));
-  const viewerWidth = game.width * scale;
 
   return (
     <Card className="w-full max-w-[1020px] mx-auto my-8">

@@ -6,15 +6,12 @@ const DEFAULT_TAGLINE = "Web Developer working in JavaScript, React, TypeScript,
 
 const About = () => {
   const [hoverText, setHoverText] = useState(DEFAULT_TAGLINE);
-  const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = (text: string) => {
     setHoverText(text);
-    setIsHovering(true);
   };
   const handleMouseLeave = () => {
     setHoverText(DEFAULT_TAGLINE);
-    setIsHovering(false);
   };
 
   return (

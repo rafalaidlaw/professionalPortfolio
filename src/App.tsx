@@ -1,30 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail} from "lucide-react"
 import Navbar from "./Navbar"
 import About from "./About.tsx"
-import { useState } from "react"
 import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
-import ECommerceFeature from "./ECommerceFeature"
 
 function App() {
-  const [hoverText, setHoverText] = useState("Web Developer working in JavaScript, React, TypeScript, Tailwind, GraphQL, Redux, CSS and Firebase.");
-
-  const handleMouseEnter = (text: string) => {
-    setHoverText(text);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverText("Web Developer working in JavaScript, React, TypeScript, Tailwind, GraphQL, Redux, CSS and Firebase.");
-  };
-
-  
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
