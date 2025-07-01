@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Mail } from "lucide-react"
 import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
+// @ts-ignore: No type declarations for InternetBanner.jsx
 import InternetBanner from "./InternetBanner"
 
 function App() {
