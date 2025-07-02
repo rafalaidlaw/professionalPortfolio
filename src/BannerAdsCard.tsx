@@ -10,8 +10,13 @@ const BannerAdsCard = () => (
         Service work for Publicis and Tribal DDB implementing functional banner ads. Initially built with ActionScript we moved to Javascript to meet industry requirements. Building ads with reusable code saved on memory and allowed for quick production and updating of multiple iterations for evolving ad campaigns.
       </CardDescription>
     </CardHeader>
-    <CardContent>
-      <InternetBanner />
+    <CardContent >
+      <div className="flex justify-center ">
+        <div className="scale-70 origin-center -mt-8">
+          <InternetBanner />
+        </div>
+      </div>
+      
     </CardContent>
   </Card>
 );

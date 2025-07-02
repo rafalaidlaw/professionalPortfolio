@@ -2,26 +2,22 @@ import ECommerceFeature from "./ECommerceFeature";
 import OpenSourceCard from "./OpenSourceCard";
 import OutlierAICard from "./OutlierAICard";
 import BannerAdsCard from "./BannerAdsCard";
+import MotionGraphicsCard from "./MotionGraphicsCard";
 
 const FeaturedProjects = () => (
   <section id="projects" className="container mx-auto mt-5 px-4 pb-4">
-    <div className="text-center space-y-8">
-      <div className="grid grid-cols-2 grid-rows-3 gap-2 items-stretch">
-        {/* ECommerceFeature spans two rows, left column */}
-        <div className="row-span-2 h-full col-start-1 row-start-1">
+    <div className="text-center">
+      <div className="grid grid-cols-2 gap-4">
+        {/* Left column */}
+        <div className="space-y-4">
           <ECommerceFeature />
-        </div>
-        {/* Banner Ads, left column, below ECommerce */}
-        <div className="col-start-1 row-start-3 -mt-18">
           <BannerAdsCard />
         </div>
-        {/* Open Source Contributions, top right */}
-        <div className="col-start-2 row-start-1">
+        {/* Right column */}
+        <div className="space-y-4">
           <OpenSourceCard />
-        </div>
-        {/* Outlier AI, bottom right */}
-        <div className="col-start-2 row-start-2">
           <OutlierAICard />
+          <MotionGraphicsCard />
         </div>
       </div>
     </div>
