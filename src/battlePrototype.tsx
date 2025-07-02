@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { GiSwordman, GiSwordwoman, GiBroadsword, GiMetalHand, GiCrossedSwords, GiGooeySword } from "react-icons/gi";
 import { RiResetLeftLine } from "react-icons/ri";
 import { Button } from "@/components/ui/button";

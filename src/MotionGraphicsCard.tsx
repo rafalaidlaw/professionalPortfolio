@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import React, { useState, useCallback } from "react";
 
 // Type for animation projects
@@ -73,11 +73,6 @@ const MotionGraphicsCard: React.FC = () => {
 
   const handleCardLeave = useCallback(() => {
     setHoveredIdx(null);
-  }, []);
-
-  const handleCardClick = useCallback(() => {
-    setShouldAutoplay(true);
-    setPlaying(true);
   }, []);
 
   return (
