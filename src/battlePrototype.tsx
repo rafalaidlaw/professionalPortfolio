@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { GiSwordman, GiSwordwoman, GiBroadsword, GiMetalHand, GiCrossedSwords, GiGooeySword } from "react-icons/gi";
+import { GiSwordman, GiSwordwoman, GiBroadsword, GiMetalHand, GiCrossedSwords, GiGooeySword, GiTombstone } from "react-icons/gi";
 import { RiResetLeftLine } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 
@@ -16,9 +16,10 @@ const attackMove = () => {
       if (arr[n + 2] === "☄") {
         arr[n + 2] = "✦";
         arr[n] = "▢";
+        
         // After placing gooey sword, push the enemy one square to the right if possible
-        if (arr[n + 3] === "▢") {
-          arr[n + 3] = "☄";
+        if (arr[n + 4] === "▢") {
+          arr[n + 4] = "☄";
         }
         break;
       }
@@ -61,6 +62,10 @@ const ErrorExample = () => {
 
   // Handler for mouse movement over button
   const handleLeft = () => {
+    // Remove all gooey swords at the start of the turn
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === "✦") arr[i] = "▢";
+    }
     let moved = false;
     attackMove();
     for (let q = 0; q < arr.length; q++) {
@@ -83,6 +88,10 @@ const ErrorExample = () => {
     }
   };
   const handleRight = () => {
+    // Remove all gooey swords at the start of the turn
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === "✦") arr[i] = "▢";
+    }
     let moved = false;
     attackMove();
     for (let i = 0; i < arr.length; i++) {
@@ -106,6 +115,10 @@ const ErrorExample = () => {
     }
   };
   const handleAttack = () => {
+    // Remove all gooey swords at the start of the turn
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === "✦") arr[i] = "▢";
+    }
     attackMove();
     let gooeyPlaced = false;
     for (let q = 0; q < arr.length; q++) {
@@ -117,8 +130,16 @@ const ErrorExample = () => {
           if (arr[q + 3] === "▢") {
             arr[q + 3] = "☄";
           }
+          if (arr[q] === "✦" && arr[q + 1] === "/") {
+            arr[q + 1] = "†";
+            arr[q + 2] = " ";
+          }
           gooeyPlaced = true;
-          
+          break;
+        }
+        // If player is next to '||', place sword 5 spots to the right
+        if (arr[q + 2] === "|" && arr[q + 5] === "▢") {
+          arr[q + 5] = "⁍";
           break;
         }
       }
@@ -129,13 +150,22 @@ const ErrorExample = () => {
           arr[q + 2] = "⁍";
         }
       }
+    if(gooeyPlaced){
+        for (let q = 0; q < arr.length; q++) {
+          if (arr[q] === "✦" && arr[q + 1] === "/") {
+            arr[q + 1] = "†";
+            arr[q + 2] = " ";
+          }
+      }
+    }
     }
     str = arr.join("");
     // After all attack logic, push the enemy to the right of every gooey sword if possible
     for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i] === "✦" && arr[i + 1] === "▢") {
-        arr[i + 1] = "☄";
-      }
+      // If a gooey sword is placed and '/' is one space to the left of the enemy, replace '//' with '†'
+      
+      
+      
     }
     setCount(str);
   };
@@ -169,6 +199,8 @@ const ErrorExample = () => {
                       ? <PLAYER_SWORD key={idx} style={{ display: 'inline', verticalAlign: 'middle', transform: 'scale(.8)' }} />
                     : char === "✦"
                       ? <GiGooeySword key={idx} style={{ display: 'inline', verticalAlign: 'middle' }} />
+                    : char === "†"
+                      ? <GiTombstone key={idx} style={{ display: 'inline', verticalAlign: 'middle' }} />
                     : char
               )
             : count.split("").map((char, idx) =>
@@ -180,6 +212,8 @@ const ErrorExample = () => {
                       ? <PLAYER_SWORD key={idx} style={{ display: 'inline', verticalAlign: 'middle', transform: 'scale(.8)' }} />
                     : char === "✦"
                       ? <GiGooeySword key={idx} style={{ display: 'inline', verticalAlign: 'middle' }} />
+                    : char === "†"
+                      ? <GiTombstone key={idx} style={{ display: 'inline', verticalAlign: 'middle' }} />
                     : char
               )}
         </p>
