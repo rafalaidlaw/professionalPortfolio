@@ -93,7 +93,7 @@ function App() {
           </p>
         </div>
       </footer>
-      <InternetBanner />
+      
     </div>
   )
 }

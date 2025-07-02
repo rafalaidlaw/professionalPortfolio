@@ -1,6 +1,7 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { Github, Linkedin } from "lucide-react";
 import { MdOutlineVideogameAsset } from "react-icons/md";
+import { FiDownload } from "react-icons/fi";
 
 function scrollToSection(sectionId: string) {
   const element = document.getElementById(sectionId);
@@ -19,7 +20,20 @@ export default function Navbar() {
             <span className="text-base font-semibold leading-tight ubuntu-font tracking-wide -mt-1 self-center" style={{ color: '#b0b2b8' }}>Web Developer</span>
           </div>
           <NavigationMenu>
-            <NavigationMenuList className="flex gap-4">
+            <NavigationMenuList className="flex gap-2">
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <a
+                    href="/Rafael_Laidlaw_Resume_2025.pdf"
+                    download
+                    className="flex items-center gap-2 text-lg font-semibold tracking-wide transition-colors hover:text-primary bg-transparent border-none cursor-pointer ubuntu-font"
+                    style={{ color: '#888a8f' }}
+                  >
+                    <span className="flex items-center gap-1">Resumé <FiDownload size={13} color="#888a8f" /></span>
+                  </a>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <span className="mx-1 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <button 
@@ -31,7 +45,7 @@ export default function Navbar() {
                   </button>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <span className="mx-1 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <button 
@@ -43,7 +57,7 @@ export default function Navbar() {
                   </button>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <span className="mx-1 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <button 
@@ -55,7 +69,7 @@ export default function Navbar() {
                   </button>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <span className="mx-1 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <button 
@@ -67,7 +81,7 @@ export default function Navbar() {
                   </button>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <span className="mx-1 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <a 
@@ -81,7 +95,7 @@ export default function Navbar() {
                   </a>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <span className="mx-2 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
+              <span className="mx-1 text-lg font-normal ubuntu-font" style={{ color: '#888a8f' }}>//</span>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <a 

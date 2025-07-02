@@ -96,7 +96,7 @@ export const InternetBanner = () => {
                   onMouseEnter={() => handleMouseEnter('boskAd')}
                   onMouseLeave={() => handleMouseLeave('boskAd')}
                 />
-                <span className="block text-xs text-gray-500 text-center mt-1">Hover To Play</span>
+                <span className="block text-xs text-white text-center mt-1"> * * * </span>
               </div>
               <div className="col-start-1 row-start-4">
                 <GridAd img={"/banners/grid-ad-11.gif"} still={"/banners/grid-ad-11-STILL.png"}

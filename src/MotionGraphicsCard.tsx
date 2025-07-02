@@ -24,7 +24,7 @@ const animationProjects: AnimationProject[] = [
   },
   {
     title: "Way Too Good",
-    description: "Animated music video that was shown in several festivals around the world including the International Animation Festivals in Ottawa and Singapore.",
+    description: "Animated music video that was shown in festivals including the International Animation Festivals in Ottawa and Singapore.",
     video: "https://www.youtube.com/embed/g9r4KwkOkuY?si=0ImXNd0I7sd8pdUw",
     type: "youtube"
   }
@@ -84,18 +84,16 @@ const MotionGraphicsCard: React.FC = () => {
     <Card className="w-full mx-auto">
       <CardHeader>
         <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Motion Graphics</CardTitle>
-        <CardDescription className="text-gray-600">
-          Various freelance projects and televison work.
-        </CardDescription>
+        
       </CardHeader>
       <CardContent className="pt-0">
         <div className="rounded-2xl relative z-20 overflow-visible">
           <div className="align-element relative z-10 max-w-7xl mx-auto overflow-visible">
             <div className="flex justify-center mb-1 mt-1">
               <div className="w-full max-w-2xl relative flex flex-col items-stretch">
-                <div className="w-64 flex flex-col mx-auto">
-                  <div className={`relative h-3.5 bg-gray-200 flex items-center justify-center rounded-t-lg transition-colors duration-300`}>
-                    <div className="absolute inset-0 flex justify-between px-2 py-1 w-full">
+                <div className="w-64 flex flex-col mx-auto pb-4">
+                  <div className={`relative  h-3.5 bg-gray-200 flex items-center justify-center rounded-t-lg transition-colors duration-300`}>
+                    <div className="absolute  inset-0 flex justify-between px-2 py-1 w-full">
                       {[...Array(4)].map((_, i) => (
                         <div key={i} className={`w-5 h-2 bg-gray-300 rounded-sm flex items-center justify-center transition-colors duration-300`}>
                           <div className={`w-5 h-2 bg-gray-700 rounded-sm transition-colors duration-300`} style={{transform: 'scale(0.9)'}}></div>
@@ -188,7 +186,7 @@ const MotionGraphicsCard: React.FC = () => {
                   <div className="relative" key={idx}>
                     <button
                       type="button"
-                      className="flex flex-col items-center w-full max-w-xs mx-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      className="flex flex-col items-center w-full max-w-xs mx-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer"
                       onClick={() => { setShouldAutoplay(true); setPlaying(true); }}
                       onMouseEnter={() => handleCardHover(project, idx)}
                       onMouseLeave={handleCardLeave}
@@ -216,6 +214,9 @@ const MotionGraphicsCard: React.FC = () => {
                     )}
                   </div>
                 ))}
+              </div>
+              <div className="ubuntu-font text-gray-500 text-center mt-4 text-xs">
+                Hover to Preview || Click to Play
               </div>
             </div>
           </div>

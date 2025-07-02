@@ -6,9 +6,7 @@ const BannerAdsCard = () => (
   <Card className="max-w-xl mx-auto">
     <CardHeader >
       <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Banner Ads</CardTitle>
-      <CardDescription className="text-gray-600">
-        Service work for Publicis and Tribal DDB implementing functional banner ads. Initially built with ActionScript we moved to Javascript to meet industry requirements. Building ads with reusable code saved on memory and allowed for quick production and updating of multiple iterations for evolving ad campaigns.
-      </CardDescription>
+      <span className="block text-xs text-gray-500 text-center mt-1">Hover To Play</span>
     </CardHeader>
     <CardContent >
       <div className="flex justify-center ">
@@ -16,7 +14,9 @@ const BannerAdsCard = () => (
           <InternetBanner />
         </div>
       </div>
-      
+      <CardDescription className="text-gray-600 text-base text-left pt-2 pb-2">
+        Service work for Publicis and Tribal DDB implementing functional banner ads. Initially built with ActionScript we moved to Javascript to meet industry requirements. Building ads with reusable code saved on memory and allowed for quick production and updating of multiple iterations for evolving ad campaigns.
+      </CardDescription>
     </CardContent>
   </Card>
 );

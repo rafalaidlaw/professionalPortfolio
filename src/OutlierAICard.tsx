@@ -6,7 +6,7 @@ const OutlierAICard = () => (
     <CardHeader>
       <div className="flex flex-col items-center w-full">
         <CardTitle className="ubuntu-font mb-1" style={{ color: '#55575b' }}>Outlier AI</CardTitle>
-        <CardDescription className="whitespace-normal leading-normal text-base mb-2">
+        <CardDescription className="whitespace-normal leading-normal text-base text-left mb-2">
           Evaluate JavaScript-related datasets to train machine learning models for code understanding and analysis. My role includes annotating code snippets, identifying patterns, and creating training scenarios that help improve model performance.
         </CardDescription>
                 <img
