@@ -3,8 +3,6 @@ const openSourceButtons = [
   { label: "Godot Engine", color: "bg-gray-600 text-gray-300" },
   { label: "PixiJS", color: "bg-gray-500 text-gray-300" },
   { label: "BuddyJS", color: "bg-gray-400 text-gray-300" },
-  { label: "Kota Co", color: "bg-gray-300 text-gray-200" },
-  { label: "One", color: "bg-gray-200 text-gray-400" },
   
 ];
 

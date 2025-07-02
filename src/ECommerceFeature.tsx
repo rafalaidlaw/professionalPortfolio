@@ -36,7 +36,7 @@ const ECommerceFeature = () => {
   };
 
   return (
-    <Card className="max-w-xl mx-auto shadow-lg">
+    <Card className="max-w-xl mx-auto">
       <h3 className=" font-bold ubuntu-font -mb-3" style={{ color: '#55575b' }}>
         E-Commerce Website
       </h3>
@@ -75,7 +75,7 @@ const ECommerceFeature = () => {
                       onMouseEnter={() => setHoveredBadge(label)}
                       onMouseLeave={() => setHoveredBadge(null)}
                     >
-                      <span className="block w-full bg-gray-200 text-gray-600" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
+                      <span className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs hover:border-gray-500 hover:text-gray-700 transition-colors duration-200 w-full" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
                       {hoveredBadge === label && (
                         <div className="absolute left-1/2 -translate-x-1/2 -top-10 z-50 bg-gray-800 text-gray-100 text-xs rounded px-3 py-2 shadow-lg ubuntu-font w-64 text-center pointer-events-none">
                           {badgeDescriptions[label]}
@@ -92,7 +92,7 @@ const ECommerceFeature = () => {
                       onMouseEnter={() => setHoveredBadge(label)}
                       onMouseLeave={() => setHoveredBadge(null)}
                     >
-                      <span className="block w-full bg-gray-200 text-gray-600" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
+                      <span className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs hover:border-gray-500 hover:text-gray-700 transition-colors duration-200 w-full" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
                       {hoveredBadge === label && (
                         <div className="absolute left-1/2 -translate-x-1/2 -top-10 z-50 bg-gray-800 text-gray-100 text-xs rounded px-3 py-2 shadow-lg ubuntu-font w-64 text-center pointer-events-none">
                           {badgeDescriptions[label]}
@@ -109,7 +109,7 @@ const ECommerceFeature = () => {
                       onMouseEnter={() => setHoveredBadge(label)}
                       onMouseLeave={() => setHoveredBadge(null)}
                     >
-                      <span className="block w-full bg-gray-200 text-gray-600" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
+                      <span className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs hover:border-gray-500 hover:text-gray-700 transition-colors duration-200 w-full" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
                       {hoveredBadge === label && (
                         <div className="absolute left-1/2 -translate-x-1/2 -top-10 z-50 bg-gray-800 text-gray-100 text-xs rounded px-3 py-2 shadow-lg ubuntu-font w-64 text-center pointer-events-none">
                           {badgeDescriptions[label]}
@@ -126,7 +126,7 @@ const ECommerceFeature = () => {
                       onMouseEnter={() => setHoveredBadge(label)}
                       onMouseLeave={() => setHoveredBadge(null)}
                     >
-                      <span className="block w-full bg-gray-200 text-gray-600" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
+                      <span className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs hover:border-gray-500 hover:text-gray-700 transition-colors duration-200 w-full" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>{label}</span>
                       {hoveredBadge === label && (
                         <div className="absolute left-1/2 -translate-x-1/2 -top-10 z-50 bg-gray-800 text-gray-100 text-xs rounded px-3 py-2 shadow-lg ubuntu-font w-64 text-center pointer-events-none">
                           {badgeDescriptions[label]}
@@ -141,7 +141,7 @@ const ECommerceFeature = () => {
                     onMouseEnter={() => setHoveredBadge("React-Hook-Form")}
                     onMouseLeave={() => setHoveredBadge(null)}
                   >
-                    <span className="block w-full bg-gray-200 text-gray-600" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>React-Hook-Form</span>
+                    <span className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs hover:border-gray-500 hover:text-gray-700 transition-colors duration-200 w-full" style={{borderRadius:'0.4rem', padding:'0.1875rem 0', fontWeight:'bold', fontSize:'0.6875rem', textAlign:'center', textTransform:'uppercase', letterSpacing:'0.05em'}}>React-Hook-Form</span>
                     {hoveredBadge === "React-Hook-Form" && (
                       <div className="absolute left-1/2 -translate-x-1/2 -top-10 z-50 bg-gray-800 text-gray-100 text-xs rounded px-3 py-2 shadow-lg ubuntu-font w-64 text-center pointer-events-none">
                         {badgeDescriptions["React-Hook-Form"]}
