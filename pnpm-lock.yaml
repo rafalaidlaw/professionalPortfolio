@@ -44,6 +44,9 @@ importers:
       combined-stream:
         specifier: ^1.0.8
         version: 1.0.8
+      delayed-stream:
+        specifier: ^1.0.0
+        version: 1.0.0
       es-set-tostringtag:
         specifier: ^2.1.0
         version: 2.1.0
