@@ -47,6 +47,9 @@ importers:
       delayed-stream:
         specifier: ^1.0.0
         version: 1.0.0
+      es-define-property:
+        specifier: ^1.0.1
+        version: 1.0.1
       es-errors:
         specifier: ^1.3.0
         version: 1.3.0
