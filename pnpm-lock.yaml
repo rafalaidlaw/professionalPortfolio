@@ -38,6 +38,9 @@ importers:
       combined-stream:
         specifier: ^1.0.8
         version: 1.0.8
+      es-set-tostringtag:
+        specifier: ^2.1.0
+        version: 2.1.0
       extend:
         specifier: ^3.0.2
         version: 3.0.2
