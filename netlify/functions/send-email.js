@@ -25,6 +25,10 @@ exports.handler = async function(event, context) {
     key: process.env.MAILGUN_API_KEY,
   });
 
+  // Debug: Log environment variables (do not log full key in production)
+  console.log("MAILGUN_API_KEY present:", !!process.env.MAILGUN_API_KEY);
+  console.log("MAILGUN_DOMAIN:", process.env.MAILGUN_DOMAIN);
+
   try {
     await mg.messages.create(process.env.MAILGUN_DOMAIN, {
       from: `Contact Form <postmaster@${process.env.MAILGUN_DOMAIN}>`,
