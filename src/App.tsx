@@ -10,6 +10,7 @@ import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
 // @ts-ignore: No type declarations for InternetBanner.jsx
 import InternetBanner from "./InternetBanner"
+import BattleSwitchPrototype from "./battleSwitchPrototype"
 
 function App() {
   return (
@@ -94,6 +95,7 @@ function App() {
         </div>
       </footer>
       
+      <BattleSwitchPrototype />
     </div>
   )
 }
