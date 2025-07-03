@@ -83,6 +83,9 @@ importers:
       gopd:
         specifier: ^1.2.0
         version: 1.2.0
+      has-symbols:
+        specifier: ^1.1.0
+        version: 1.1.0
       has-tostringtag:
         specifier: ^1.0.2
         version: 1.0.2
