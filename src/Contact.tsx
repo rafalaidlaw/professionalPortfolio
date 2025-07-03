@@ -7,30 +7,9 @@ import { Mail } from "lucide-react";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch("/.netlify/functions/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
   };
 
   return (
@@ -50,7 +29,11 @@ const Contact = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact" />
+              <div style={{ display: 'none' }}>
+                <label>Don't fill this out if you're human: <input name="bot-field" onChange={handleChange} /></label>
+              </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">Name</label>
@@ -65,12 +48,10 @@ const Contact = () => {
                 <label htmlFor="message" className="text-sm font-medium">Message</label>
                 <Textarea id="message" name="message" placeholder="Your message..." className="min-h-[120px]" required value={form.message} onChange={handleChange} />
               </div>
-              <Button type="submit" className="w-full" disabled={status === "sending"}>
+              <Button type="submit" className="w-full">
                 <Mail className="mr-2 h-4 w-4" />
-                {status === "sending" ? "Sending..." : "Send Message"}
+                Send Message
               </Button>
-              {status === "success" && <p className="text-green-600 text-center mt-2">Message sent!</p>}
-              {status === "error" && <p className="text-red-600 text-center mt-2">Something went wrong. Please try again.</p>}
             </form>
           </CardContent>
         </Card>
