@@ -45,7 +45,7 @@ const Games = () => {
   const maxWidth = Math.max(...games.map(g => g.width));
 
   return (
-    <Card id="games" className="w-full max-w-[1020px] mx-auto my-8">
+    <Card id="games" className="w-full max-w-[1020px] mx-auto">
       <CardHeader>
         <CardTitle className="ubuntu-font text-center" style={{ color: '#55575b' }}>Games built with Unity, Godot and PhaserJS</CardTitle>
       </CardHeader>

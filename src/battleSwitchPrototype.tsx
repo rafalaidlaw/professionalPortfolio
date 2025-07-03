@@ -202,7 +202,7 @@ const BattleSwitchPrototype = () => {
           {board.map((char, idx) => renderSquare(char, idx))}
         </p>
         <div className="flex justify-center mt-2">
-          <div className="inline-flex gap-x-1 bg-white pt-1 pb-1 rounded-md select-none cursor-default">
+          <div className="inline-flex gap-x-1 pt-1 pb-1 rounded-md select-none cursor-default">
             <Button
               type="button"
               variant="outline"

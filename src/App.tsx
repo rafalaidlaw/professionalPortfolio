@@ -5,51 +5,42 @@ import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
 // @ts-ignore: No type declarations for InternetBanner.jsx
 import InternetBanner from "./InternetBanner"
-import BattleSwitchPrototype from "./battleSwitchPrototype"
+// import BattleSwitchPrototype from "./battleSwitchPrototype"
+// import BattlePrototype from "./battlePrototype"
 import Contact from "./Contact"
+import BoringSection from "./BoringSection"
+import Footer from "./Footer"
 
 function App() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <>
+      <div className="min-h-screen bg-background">
+        <Navbar />
 
-      <About />
+        <About />
 
-      <Separator />
+        <Separator />
 
-      {/* Projects Section */}
-      <FeaturedProjects />
+        {/* Projects Section */}
+        <FeaturedProjects />
 
-      <Separator />
+        <Separator />
 
-      <Games />
+        <Games />
 
-      <Separator />
+        <Separator />
 
-      {/* Contact Section */}
-      <Contact />
-
-      {/* Boring Section */}
-      <section id="boring" className="container mx-auto px-4 py-12 flex flex-col items-center justify-center">
-        <a
-          href="https://rafaellaidlawportfolio.netlify.app/"
-          className="mt-8 inline-block px-6 py-3 rounded-lg bg-gray-200 text-gray-700 font-semibold text-sm shadow hover:bg-gray-300 transition-colors text-center"
-        >
-          Think the site needs color? Click here to make it snazzy.
-        </a>
-      </section>
-
-      {/* Footer */}
-      <BattleSwitchPrototype />
-      <footer className="border-t py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">
-            © 2024 Rafael Laidlaw. Built with React, TypeScript, and shadcn/ui.
-          </p>
+        {/* Contact Section */}
+        <div className="-mt-2 -mb-4">
+          <Contact />
         </div>
-      </footer>
-      
-    </div>
+
+        <BoringSection />
+
+        <Footer />
+      </div>
+      {/* <BattleSwitchPrototype /> */}
+    </>
   )
 }
 

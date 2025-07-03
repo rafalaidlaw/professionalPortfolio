@@ -4,7 +4,7 @@ import OutlierAICard from "./OutlierAICard";
 import BannerAdsCard from "./BannerAdsCard";
 import MotionGraphicsCard from "./MotionGraphicsCard";
 // @ts-ignore: No type declarations for battlePrototype.tsx
-import ErrorExample from "./battlePrototype";
+// import ErrorExample from "./battlePrototype";
 
 const FeaturedProjects = () => (
   <section id="projects" className="container mx-auto mt-5 px-4 pb-4">
@@ -20,7 +20,7 @@ const FeaturedProjects = () => (
           <OpenSourceCard />
           <OutlierAICard />
           <MotionGraphicsCard />
-          <ErrorExample />
+          {/* <ErrorExample /> */}
         </div>
       </div>
     </div>

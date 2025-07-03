@@ -13,8 +13,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="container mx-auto px-4 py-20">
-      <div className="max-w-2xl mx-auto space-y-8">
+    <section id="contact" className="container mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto space-y-4">
         <div className="text-center">
           <h2 className="text-3xl font-bold ubuntu-font" style={{ color: '#55575b' }}>Get In Touch</h2>
           <p className="text-muted-foreground">
