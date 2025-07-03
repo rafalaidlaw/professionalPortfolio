@@ -19,6 +19,7 @@
     "asynckit": "^0.4.0",
     "axios": "^1.10.0",
     "base-64": "^1.0.0",
+    "call-bind-apply-helpers": "^1.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "combined-stream": "^1.0.8",
