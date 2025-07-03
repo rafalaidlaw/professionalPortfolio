@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { GiSwordman, GiSwordwoman, GiBroadsword, GiMetalHand, GiCrossedSwords, GiGooeySword, GiTombstone } from "react-icons/gi";
+import { GiSwordman, GiSwordwoman, GiBroadsword, GiCrossedSwords, GiGooeySword, GiTombstone } from "react-icons/gi";
 import { RiResetLeftLine } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 
@@ -54,7 +54,6 @@ const BattleSwitchPrototype = () => {
   const [board, setBoard] = useState(getInitialBoard());
   const [playerPos, setPlayerPos] = useState(PLAYER_START);
   const [enemyPos, setEnemyPos] = useState(ENEMY_START);
-  const [swordPos, setSwordPos] = useState<number | null>(null);
   const [gooeyPos, setGooeyPos] = useState<number | null>(null);
 
   // Remove gooey sword at the start of each turn
@@ -82,7 +81,6 @@ const BattleSwitchPrototype = () => {
     }
     setPlayerPos(newPlayerPos);
     setBoard(arr);
-    setSwordPos(null);
   };
 
   const handleRight = () => {
@@ -102,7 +100,6 @@ const BattleSwitchPrototype = () => {
     }
     setPlayerPos(newPlayerPos);
     setBoard(arr);
-    setSwordPos(null);
   };
 
   const handleAttack = () => {
@@ -129,9 +126,6 @@ const BattleSwitchPrototype = () => {
           // If enemy is at the last square, place a grave
           arr[enemyPos + 1] = SQUARE_TYPE.GRAVE;
         }
-      } else {
-        arr[swordTarget] = SQUARE_TYPE.SWORD;
-        setSwordPos(swordTarget);
       }
     }
     setBoard(arr);
@@ -141,7 +135,6 @@ const BattleSwitchPrototype = () => {
     setBoard(getInitialBoard());
     setPlayerPos(PLAYER_START);
     setEnemyPos(ENEMY_START);
-    setSwordPos(null);
     setGooeyPos(null);
   };
 

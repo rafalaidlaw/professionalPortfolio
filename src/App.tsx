@@ -1,11 +1,6 @@
 import Navbar from "./Navbar"
 import About from "./About.tsx"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail } from "lucide-react"
 import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
 // @ts-ignore: No type declarations for InternetBanner.jsx
