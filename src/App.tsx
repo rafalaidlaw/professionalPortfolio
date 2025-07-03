@@ -5,8 +5,11 @@ import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
 // @ts-ignore: No type declarations for InternetBanner.jsx
 import InternetBanner from "./InternetBanner"
+<<<<<<< HEAD
 import BattleSwitchPrototype from "./battleSwitchPrototype"
 import Contact from "./Contact"
+=======
+>>>>>>> parent of 5f8b53c (preflight check)
 
 function App() {
   return (
@@ -48,7 +51,6 @@ function App() {
         </div>
       </footer>
       
-      <BattleSwitchPrototype />
     </div>
   )
 }
