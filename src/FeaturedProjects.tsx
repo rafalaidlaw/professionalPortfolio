@@ -3,6 +3,7 @@ import OpenSourceCard from "./OpenSourceCard";
 import OutlierAICard from "./OutlierAICard";
 import BannerAdsCard from "./BannerAdsCard";
 import MotionGraphicsCard from "./MotionGraphicsCard";
+import ThreeJSProjectCard from "./ThreeJSProjectCard";
 // @ts-ignore: No type declarations for battlePrototype.tsx
 // import ErrorExample from "./battlePrototype";
 
@@ -20,6 +21,7 @@ const FeaturedProjects = () => (
           <OpenSourceCard />
           <OutlierAICard />
           <MotionGraphicsCard />
+          <ThreeJSProjectCard />
           {/* <ErrorExample /> */}
         </div>
       </div>
