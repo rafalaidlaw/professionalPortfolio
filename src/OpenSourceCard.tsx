@@ -1,17 +1,42 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const openSourceProjects = [
-  { label: "Altair GraphQL", desc: "Implemented search functionality for parsing collections." },
-  { label: "Godot Engine", desc: "Longtime member of the bugsquad testing team." },
-  { label: "PixiJS", desc: "Fixed issue with scale when window size changed." },
-  { label: "BuddyJS", desc: "JavaScript testing tool" },
+  {
+    label: "Altair GraphQL",
+    desc: "Implemented search functionality for parsing collections.",
+  },
+  {
+    label: "Godot Engine",
+    desc: "Longtime member of the bugsquad testing team.",
+  },
+  {
+    label: "PixiJS",
+    desc: "Contributed to debate around scaling issues with window size changed.",
+  },
+  {
+    label: "Hoppscotch",
+    desc: "Fixed issue with authentication with query params",
+  },
 ];
 
 const OpenSourceCard = () => (
   <Card>
     <CardHeader>
-      <CardTitle className="ubuntu-font" style={{ color: '#55575b' }}>Open Source Contributions</CardTitle>
+      <CardTitle className="ubuntu-font" style={{ color: "#55575b" }}>
+        Open Source Contributions
+      </CardTitle>
     </CardHeader>
     <CardContent>
       <TooltipProvider delayDuration={0}>
@@ -46,9 +71,9 @@ const OpenSourceCard = () => (
                   >
                     {proj.label}
                   </a>
-                ) : proj.label === "BuddyJS" ? (
+                ) : proj.label === "Hoppscotch" ? (
                   <a
-                    href="https://buddyjs.org/"
+                    href="https://github.com/hoppscotch/hoppscotch/pull/5231"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
@@ -69,10 +94,11 @@ const OpenSourceCard = () => (
         </div>
       </TooltipProvider>
       <CardDescription className="text-base text-left pt-2 pb-2">
-        I have contributed extensively to open source projects, including tools and engines used by developers worldwide.
+        I have contributed extensively to open source projects, including tools
+        and engines used by developers worldwide.
       </CardDescription>
     </CardContent>
   </Card>
 );
 
-export default OpenSourceCard; 
+export default OpenSourceCard;
