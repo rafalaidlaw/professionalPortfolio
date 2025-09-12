@@ -18,16 +18,16 @@ const openSourceProjects = [
     desc: "Implemented search functionality for parsing collections.",
   },
   {
+    label: "Hoppscotch",
+    desc: "Fixed issue with authentication with query params",
+  },
+  {
     label: "Godot Engine",
     desc: "Longtime member of the bugsquad testing team.",
   },
   {
-    label: "PixiJS",
-    desc: "Contributed to debate around scaling issues with window size changed.",
-  },
-  {
-    label: "Hoppscotch",
-    desc: "Fixed issue with authentication with query params",
+    label: "Mermaid-js",
+    desc: "Contributed to debate around bidirectional arrows rendering.",
   },
 ];
 
@@ -62,9 +62,9 @@ const OpenSourceCard = () => (
                   >
                     {proj.label}
                   </a>
-                ) : proj.label === "PixiJS" ? (
+                ) : proj.label === "Mermaid-js" ? (
                   <a
-                    href="https://pixijs.com/"
+                    href="https://github.com/mermaid-js/mermaid/issues/6721"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
