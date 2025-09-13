@@ -5,7 +5,9 @@ const ThreeJSProjectCard: React.FC = () => {
   return (
     <Card className="w-full mx-auto">
       <CardHeader>
-        <CardTitle className="ubuntu-font -mb-4" style={{ color: '#55575b' }}>ThreeJS</CardTitle>
+        <CardTitle className="ubuntu-font -mb-4" style={{ color: "#55575b" }}>
+          ThreeJS
+        </CardTitle>
       </CardHeader>
       <CardContent className="pt-0">
         <div className="w-full h-64 mb-2">
@@ -17,11 +19,13 @@ const ThreeJSProjectCard: React.FC = () => {
           />
         </div>
         <p className="text-gray-600 text-sm leading-relaxed">
-          Custom Modded Gameboy Builder. Shoppers can build and visualize their modded Gameboy, as well as see the price, then add the gameboy to their cart.
+          WIP: Custom Modded Gameboy Builder. Shoppers will be able to build and
+          visualize their modded Gameboy, as well as see the price, then add the
+          gameboy to their cart.
         </p>
       </CardContent>
     </Card>
   );
 };
 
-export default ThreeJSProjectCard; 
+export default ThreeJSProjectCard;

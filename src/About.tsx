@@ -49,14 +49,13 @@ const About = () => {
         {/* About Text */}
         <div className="flex-1 flex items-center h-24 pl-6">
           <p className="text-sm ubuntu-font text-gray-700 leading-relaxed text-left">
-            I have contributed extensively to open source projects such as
-            Altair GraphQL, Hoppscotch and Mermaid-js. Experience with AI as a
-            Javascript trainer for Outlier AI, and building projects using
-            modern tools such as Claude, Fooocus, and Code Agent. I spent 3
-            years developing banner ads for Publicis and Tribal DDB. I recently
-            finished building a storefront for a local Toronto vendor that used
-            Firebase API as its backend. I have also built a few games using
-            Unity, Godot and Phaser.
+            I have contributed to open source projects such as Altair GraphQL,
+            Hoppscotch, Godot Engine and Mermaid-js. Experience with AI as a
+            Javascript trainer for Outlier AI. I spent 3 years developing banner
+            ads for Publicis and Tribal DDB. I recently finished building a
+            React website for my e-commerce business. I have also built a few
+            games using Unity, Godot and Phaser. Currently working on a custom
+            modded Gameboy Builder using ThreeJS.
           </p>
         </div>
       </div>

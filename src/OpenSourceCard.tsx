@@ -23,7 +23,7 @@ const openSourceProjects = [
   },
   {
     label: "Godot Engine",
-    desc: "Longtime member of the bugsquad testing team.",
+    desc: "Recreated bugs for bugsquad testing.",
   },
   {
     label: "Mermaid-js",
