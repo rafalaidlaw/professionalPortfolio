@@ -14,6 +14,10 @@ import {
 
 const openSourceProjects = [
   {
+    label: "Crawlee",
+    desc: "Fixed info message showing undefined for maxRequestsPerCrawl limit.",
+  },
+  {
     label: "Altair GraphQL",
     desc: "Implemented search functionality for parsing collections.",
   },
@@ -44,7 +48,16 @@ const OpenSourceCard = () => (
           {openSourceProjects.map((proj) => (
             <Tooltip key={proj.label}>
               <TooltipTrigger asChild>
-                {proj.label === "Altair GraphQL" ? (
+                {proj.label === "Crawlee" ? (
+                  <a
+                    href="https://github.com/apify/crawlee/pull/3237"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  >
+                    {proj.label}
+                  </a>
+                ) : proj.label === "Altair GraphQL" ? (
                   <a
                     href="https://github.com/altair-graphql"
                     target="_blank"

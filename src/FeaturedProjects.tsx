@@ -4,6 +4,7 @@ import OutlierAICard from "./OutlierAICard";
 import BannerAdsCard from "./BannerAdsCard";
 import MotionGraphicsCard from "./MotionGraphicsCard";
 import ThreeJSProjectCard from "./ThreeJSProjectCard";
+import PixiSlotsCard from "./PixiSlotsCard";
 // @ts-ignore: No type declarations for battlePrototype.tsx
 // import ErrorExample from "./battlePrototype";
 
@@ -15,6 +16,7 @@ const FeaturedProjects = () => (
         <div className="space-y-4">
           <ECommerceFeature />
           <BannerAdsCard />
+          <PixiSlotsCard />
         </div>
         {/* Right column */}
         <div className="space-y-4">
@@ -29,4 +31,4 @@ const FeaturedProjects = () => (
   </section>
 );
 
-export default FeaturedProjects; 
+export default FeaturedProjects;

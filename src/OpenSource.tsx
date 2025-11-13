@@ -1,9 +1,9 @@
 const openSourceButtons = [
+  { label: "Crawlee", color: "bg-gray-300 text-gray-700" },
   { label: "Altair GraphQL", color: "bg-gray-700 text-gray-300" },
   { label: "Godot Engine", color: "bg-gray-600 text-gray-300" },
   { label: "PixiJS", color: "bg-gray-500 text-gray-300" },
   { label: "BuddyJS", color: "bg-gray-400 text-gray-300" },
-  
 ];
 
 const OpenSource = () => (
