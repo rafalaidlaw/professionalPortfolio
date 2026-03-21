@@ -1,0 +1,117 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+const openSourceProjects = [
+  {
+    label: "Crawlee",
+    desc: "Fixed info message showing undefined for maxRequestsPerCrawl limit.",
+  },
+  {
+    label: "Altair GraphQL",
+    desc: "Implemented search functionality for parsing collections.",
+  },
+  {
+    label: "Hoppscotch",
+    desc: "Fixed issue with authentication with query params",
+  },
+  {
+    label: "Godot Engine",
+    desc: "Recreated bugs for bugsquad testing.",
+  },
+  {
+    label: "Mermaid-js",
+    desc: "Contributed to debate around bidirectional arrows rendering.",
+  },
+];
+
+const OpenSourceCard = () => (
+  <Card>
+    <CardHeader>
+      <CardTitle className="ubuntu-font" style={{ color: "#55575b" }}>
+        Open Source Contributions
+      </CardTitle>
+    </CardHeader>
+    <CardContent>
+      <TooltipProvider delayDuration={0}>
+        <div className="flex flex-wrap gap-2 mb-4 justify-center">
+          {openSourceProjects.map((proj) => (
+            <Tooltip key={proj.label}>
+              <TooltipTrigger asChild>
+                {proj.label === "Crawlee" ? (
+                  <a
+                    href="https://github.com/apify/crawlee/pull/3237"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  >
+                    {proj.label}
+                  </a>
+                ) : proj.label === "Altair GraphQL" ? (
+                  <a
+                    href="https://github.com/altair-graphql"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  >
+                    {proj.label}
+                  </a>
+                ) : proj.label === "Godot Engine" ? (
+                  <a
+                    href="https://docs.godotengine.org/en/stable/contributing/workflow/bug_triage_guidelines.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  >
+                    {proj.label}
+                  </a>
+                ) : proj.label === "Mermaid-js" ? (
+                  <a
+                    href="https://github.com/mermaid-js/mermaid/issues/6721"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  >
+                    {proj.label}
+                  </a>
+                ) : proj.label === "Hoppscotch" ? (
+                  <a
+                    href="https://github.com/hoppscotch/hoppscotch/pull/5231"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  >
+                    {proj.label}
+                  </a>
+                ) : (
+                  <span className="inline-block bg-white border border-gray-300 text-gray-500 rounded px-3 py-1 font-bold text-xs cursor-pointer hover:border-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    {proj.label}
+                  </span>
+                )}
+              </TooltipTrigger>
+              <TooltipContent className="absolute left-1/2 -translate-x-1/2 -top-10 z-50 bg-gray-800 text-gray-100 text-xs rounded px-3 py-2 shadow-lg ubuntu-font w-64 text-center pointer-events-none">
+                {proj.desc}
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+      </TooltipProvider>
+      <CardDescription className="text-base text-left pt-2 pb-2">
+        I have contributed extensively to open source projects, including tools
+        and engines used by developers worldwide.
+      </CardDescription>
+    </CardContent>
+  </Card>
+);
+
+export default OpenSourceCard;
