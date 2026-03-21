@@ -10,7 +10,7 @@ const ThreeJSProjectCard: React.FC = () => {
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-0">
-        <div className="w-full h-64 mb-2">
+        <div className="w-full min-w-0 h-64 mb-2 overflow-hidden rounded-lg">
           <iframe
             src="https://rafalaidlaw.github.io/Three.js-Gameboy-Mods/"
             title="Three.js Project"

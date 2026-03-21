@@ -13,13 +13,13 @@ const FeaturedProjects = () => (
     <div className="text-center">
       <div className="grid grid-cols-2 gap-4">
         {/* Left column */}
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <ECommerceFeature />
           <BannerAdsCard />
           <PixiSlotsCard />
         </div>
         {/* Right column */}
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <OpenSourceCard />
           <OutlierAICard />
           <MotionGraphicsCard />

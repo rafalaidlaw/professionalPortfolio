@@ -3,14 +3,14 @@ import React from "react";
 
 const PixiSlotsCard: React.FC = () => {
   return (
-    <Card className="w-full mx-auto">
+    <Card className="max-w-xl mx-auto w-full">
       <CardHeader>
         <CardTitle className="ubuntu-font -mb-4" style={{ color: "#55575b" }}>
           PixiSlots
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-0">
-        <div className="w-full max-w-xl mx-auto h-72 mb-2">
+        <div className="w-full min-w-0 h-72 mb-2 overflow-hidden rounded-lg">
           <iframe
             src="https://rafalaidlaw.github.io/pixislots/"
             title="PixiSlots Slot Machine"
