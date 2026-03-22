@@ -17,6 +17,7 @@ function DesktopApp() {
       <div className="min-h-screen bg-background">
         <Navbar />
 
+        <div className="pt-20">
         <About />
 
         <Separator />
@@ -38,6 +39,7 @@ function DesktopApp() {
         <BoringSection />
 
         <Footer />
+        </div>
       </div>
       {/* <BattleSwitchPrototype /> */}
     </>
