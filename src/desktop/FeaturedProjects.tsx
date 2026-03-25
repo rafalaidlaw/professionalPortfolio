@@ -1,5 +1,4 @@
 import ECommerceFeature from "./ECommerceFeature";
-import OpenSourceCard from "./OpenSourceCard";
 import OutlierAICard from "./OutlierAICard";
 import BannerAdsCard from "./BannerAdsCard";
 import MotionGraphicsCard from "./MotionGraphicsCard";
@@ -20,7 +19,6 @@ const FeaturedProjects = () => (
         </div>
         {/* Right column */}
         <div className="min-w-0 space-y-4">
-          <OpenSourceCard />
           <OutlierAICard />
           <MotionGraphicsCard />
           <ThreeJSProjectCard />

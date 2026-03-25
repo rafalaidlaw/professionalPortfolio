@@ -4,12 +4,15 @@ import MobileApp from "./mobile/App"
 
 const MOBILE_BREAKPOINT = 768
 
+const forceMobile = new URLSearchParams(window.location.search).get('view') === 'mobile'
+
 function App() {
   const [isMobile, setIsMobile] = useState(
-    () => window.innerWidth < MOBILE_BREAKPOINT
+    () => forceMobile || window.innerWidth < MOBILE_BREAKPOINT
   )
 
   useEffect(() => {
+    if (forceMobile) return
     const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
     mq.addEventListener("change", handler)

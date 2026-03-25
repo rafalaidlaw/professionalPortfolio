@@ -20,10 +20,12 @@ function DesktopApp() {
         <div className="pt-20">
         <About />
 
-        <Separator />
+        <div className="mt-16">
+          <Separator />
 
-        {/* Projects Section */}
-        <FeaturedProjects />
+          {/* Projects Section */}
+          <FeaturedProjects />
+        </div>
 
         <Separator />
 

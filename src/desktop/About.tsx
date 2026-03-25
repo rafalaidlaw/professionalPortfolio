@@ -1,80 +1,135 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Skills from "./Skills";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
-const DEFAULT_TAGLINE =
-  "Web Developer working in JavaScript, React, TypeScript, Tailwind, GraphQL, Redux, CSS and Firebase.";
+const openSourceProjects: Record<
+  string,
+  { label: string; url: string; description: string }
+> = {
+  PixiJS: {
+    label: "PixiJS",
+    url: "https://github.com/pixijs/pixijs/pull/11761",
+    description:
+      "Updated XML font parsing to support version 3 fonts using regex instead of direct comparison; extended existing test coverage for font XML parsing.",
+  },
+  Crawlee: {
+    label: "Crawlee",
+    url: "https://github.com/apify/crawlee/pull/3237",
+    description:
+      "Fixed an issue where the max requests per crawl limit displayed an undefined info message.",
+  },
+  Hoppscotch: {
+    label: "Hoppscotch",
+    url: "https://github.com/hoppscotch/hoppscotch/pull/5231",
+    description:
+      "Resolved an issue related to authentication query parameters.",
+  },
+  "Altair GraphQL": {
+    label: "Altair GraphQL",
+    url: "https://github.com/altair-graphql",
+    description:
+      "Implemented Feature Request search functionality for parsing collections.",
+  },
+  "Godot Engine": {
+    label: "Godot Engine",
+    url: "https://docs.godotengine.org/en/stable/contributing/workflow/bug_triage_guidelines.html",
+    description:
+      "Recreated and documented a bug to support validation and testing by the bug squad.",
+  },
+};
 
 const About = () => {
-  const [hoverText, setHoverText] = useState(DEFAULT_TAGLINE);
+  const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
 
-  const handleMouseEnter = (text: string) => {
-    setHoverText(text);
-  };
-  const handleMouseLeave = () => {
-    setHoverText(DEFAULT_TAGLINE);
-  };
+  useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (e.data?.type === "bubble-hover") {
+        setHoveredBubble(e.data.label);
+      } else if (e.data?.type === "bubble-leave") {
+        setHoveredBubble(null);
+      }
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, []);
+
+  const project = hoveredBubble ? openSourceProjects[hoveredBubble] : null;
 
   return (
-    <section id="about" className="container mx-auto px-4 pt-6">
-      {/* Main Row: Skill Cube | Name/Title | Divider | About Text */}
-      <div className="flex flex-row items-center gap-4 mb-4 rounded-lg p-3 w-full">
-        {/* Skill cube */}
-        <div className="flex-shrink-0 flex items-center justify-center w-24 h-24 pr-6">
-          <Avatar className="h-24 w-20 rounded-none flex-shrink-0">
-            <AvatarImage
-              src="/skillcube_20-grey.gif"
-              alt="Profile"
-              className="h-24 w-20 object-contain rounded-none"
+    <section
+      id="about"
+      className="container mx-auto px-4 pt-16 overflow-visible"
+    >
+      {/* ThreeJS Bubble App */}
+      <div className="w-full relative">
+        {/* Speech bubble - appears on hover */}
+        {project && (
+          <div
+            className="absolute bottom-64 z-20 bg-white border border-[#cccccc] border-r-[6px] border-b-[4px] rounded-none shadow-md px-4 py-3 ubuntu-font"
+            style={{ width: "200px", right: "calc(6rem + 80px - 200px)" }}
+          >
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-bold block hover:text-primary transition-colors"
+              style={{ color: "#55575b" }}
+            >
+              {project.label}
+            </a>
+            <p className="text-xs mt-1" style={{ color: "#888a8f" }}>
+              {project.description}
+            </p>
+            {/* Triangle tail */}
+            <div
+              className="absolute left-8"
+              style={{
+                bottom: "-26px",
+                width: 0,
+                height: 0,
+                borderLeft: "8px solid transparent",
+                borderRight: "11px solid transparent",
+                borderTop: "26px solid #cccccc",
+              }}
             />
-            <AvatarFallback className="text-3xl font-bold bg-gradient-to-br from-primary to-primary/60 text-primary-foreground rounded-none">
+            <div
+              className="absolute left-8"
+              style={{
+                bottom: "-22px",
+                width: 0,
+                height: 0,
+                borderLeft: "7px solid transparent",
+                borderRight: "8px solid transparent",
+                borderTop: "23px solid #fff",
+              }}
+            />
+          </div>
+        )}
+
+        {/* Rafa card - bottom right */}
+        <div
+          className="absolute bottom-34 right-24 z-10 bg-white border border-[#cccccc] border-r-[6px] border-b-[4px] rounded-none shadow-sm p-3 flex flex-col items-center"
+          style={{ width: "80px", height: "80px" }}
+        >
+          <Avatar className="h-10 w-10">
+            <AvatarFallback className="text-xs text-gray-400 bg-gray-100">
               RL
             </AvatarFallback>
           </Avatar>
-        </div>
-        {/* Name and Title */}
-        <div className="flex flex-col justify-center min-w-[220px] h-24 pr-6">
-          <h1
-            className="text-4xl font-bold tracking-tight ubuntu-font"
+          <span
+            className="text-xs font-medium mt-1"
             style={{ color: "#55575b" }}
           >
-            Rafael Laidlaw
-          </h1>
-          <p className="text-xl text-muted-foreground font-medium">
-            Web Developer
-          </p>
+            Rafa
+          </span>
         </div>
-        {/* Vertical Divider */}
-        <div className="h-24 border-l-2 border-gray-300 mx-0" />
-        {/* About Text */}
-        <div className="flex-1 flex items-center h-24 pl-6">
-          <p className="text-sm ubuntu-font text-gray-700 leading-relaxed text-left">
-            I have contributed to open source projects such as Altair GraphQL,
-            Hoppscotch, Godot Engine and Mermaid-js. Experience with AI as a
-            Javascript trainer for Outlier AI. I spent 3 years developing banner
-            ads for Publicis and Tribal DDB. I recently finished building a
-            React website for my e-commerce business. I have also built a few
-            games using Unity, Godot and Phaser. Currently working on a custom
-            modded Gameboy Builder using ThreeJS.
-          </p>
-        </div>
-      </div>
-      {/* Tagline Box (now dynamic) */}
-      <div className="w-full flex justify-center mb-2">
-        <div className="w-full md:w-4/5 bg-white rounded-lg py-2 px-4">
-          <p
-            className="text-sm text-center font-medium"
-            style={{ color: "#55575b" }}
-          >
-            {hoverText}
-          </p>
-        </div>
-      </div>
-      {/* Skills Row */}
-      <div className="w-full flex justify-center mt-0">
-        <Skills
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+
+        <iframe
+          src="https://rafalaidlaw.github.io/Bubble-ThreeJS/"
+          title="Bubble ThreeJS"
+          className="w-full border-none"
+          style={{ height: "600px", background: "transparent" }}
+          allow="accelerometer; autoplay"
+          allowTransparency={true}
         />
       </div>
     </section>

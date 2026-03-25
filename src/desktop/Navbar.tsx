@@ -1,19 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { Github, Linkedin, Menu, X } from "lucide-react";
+import { Github, Linkedin, Menu, X, Settings, Smartphone, FileCode, Gamepad2 } from "lucide-react";
 import { MdOutlineVideogameAsset } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
-
-function FlipPhoneIcon({ size = 22, color = "#888a8f" }: { size?: number; color?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14.5 4h-9v11.5a6.5 6.5 0 1 0 13 0V8c0-1.886 0-2.828-.586-3.414S16.386 4 14.5 4Z"/>
-      <path d="M11 18h2"/>
-      <path d="M8.5 8.429c0-.4 0-.599.056-.76a1 1 0 0 1 .614-.613C9.33 7 9.53 7 9.929 7h4.142c.4 0 .599 0 .76.056a1 1 0 0 1 .613.614c.056.16.056.36.056.759V9c0 .464 0 .697-.03.891a2.5 2.5 0 0 1-2.079 2.078C13.197 12 12.464 12 12 12s-1.197 0-1.391-.03A2.5 2.5 0 0 1 8.53 9.89C8.5 9.697 8.5 9.464 8.5 9z"/>
-      <path d="M5.5 4V2"/>
-    </svg>
-  );
-}
 
 function scrollToSection(sectionId: string, closeMenu?: () => void) {
   if (closeMenu) {
@@ -34,30 +23,33 @@ function scrollToSection(sectionId: string, closeMenu?: () => void) {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const { visible } = useScrollDirection();
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const closeSettings = useCallback(() => setSettingsOpen(false), []);
 
-  // Escape key closes menu + body scroll lock
+  const anyOpen = menuOpen || settingsOpen;
+
+  // Escape key closes menus + body scroll lock
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMenu();
+      if (e.key === "Escape") {
+        closeMenu();
+        closeSettings();
+      }
     };
-    if (menuOpen) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (anyOpen) {
       document.addEventListener("keydown", handleKey);
       document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
     }
     return () => {
       document.removeEventListener("keydown", handleKey);
       document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
     };
-  }, [menuOpen, closeMenu]);
+  }, [anyOpen, closeMenu, closeSettings]);
 
   return (
     <>
@@ -67,7 +59,7 @@ export default function Navbar() {
           visible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <nav className={`w-full max-w-2xl bg-background border border-[#c2c3c7] px-5 py-3 ${menuOpen ? "border-b-0" : "navbar-cube"}`}>
+        <nav className={`w-full max-w-2xl bg-white border border-[#c2c3c7] border-b-[8px] px-5 py-3 ${menuOpen || settingsOpen ? "border-b-0" : "navbar-cube"}`}>
           <div className="flex items-center justify-between">
             <button
               onClick={() => setMenuOpen(true)}
@@ -90,24 +82,28 @@ export default function Navbar() {
                 Web Developer
               </span>
             </div>
-            <div className="p-2">
-              <FlipPhoneIcon />
-            </div>
+            <button
+              onClick={() => setSettingsOpen(true)}
+              className="p-2 bg-transparent border-none cursor-pointer"
+              aria-label="Open settings"
+            >
+              <Settings size={22} color="#888a8f" />
+            </button>
           </div>
         </nav>
       </div>
 
-      {/* Blur backdrop */}
+      {/* Blur backdrop (shared for both menus) */}
       <div
         className={`fixed inset-0 z-35 backdrop-blur-sm transition-opacity duration-300 ${
-          menuOpen
+          anyOpen
             ? "opacity-100"
             : "opacity-0 pointer-events-none"
         }`}
-        onClick={closeMenu}
+        onClick={() => { closeMenu(); closeSettings(); }}
       />
 
-      {/* Floating dropdown menu */}
+      {/* Main navigation menu */}
       <div
         className={`fixed inset-0 z-40 flex items-center justify-center py-3 px-4 transition-all duration-300 ease-in-out ${
           menuOpen
@@ -115,8 +111,8 @@ export default function Navbar() {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="w-full max-w-2xl h-full bg-background border border-[#c2c3c7] flex flex-col">
-          {/* Header row matching navbar layout */}
+        <div className="w-full max-w-2xl h-full bg-white border border-[#c2c3c7] flex flex-col">
+          {/* Header row */}
           <div className="flex items-center justify-between px-5 py-3">
             <button
               onClick={closeMenu}
@@ -140,24 +136,14 @@ export default function Navbar() {
               </span>
             </div>
             <div className="p-2">
-              <FlipPhoneIcon />
+              <Settings size={22} color="#888a8f" />
             </div>
           </div>
 
-          {/* Divider */}
           <div className="w-full h-px bg-[#c2c3c7]" />
 
-          {/* Nav items — centered in remaining space */}
+          {/* Nav items */}
           <div className="flex-1 flex flex-col items-center justify-center gap-5">
-            <a
-              href="/Rafael_Laidlaw_Resume_2025.pdf"
-              download
-              onClick={closeMenu}
-              className="flex items-center gap-2 text-xl font-semibold ubuntu-font no-underline transition-colors duration-200 hover:text-primary"
-              style={{ color: "#888a8f" }}
-            >
-              Resumé <FiDownload size={16} />
-            </a>
             <button
               onClick={() => scrollToSection("about", closeMenu)}
               className="text-xl font-semibold ubuntu-font bg-transparent border-none cursor-pointer transition-colors duration-200 hover:text-primary"
@@ -206,6 +192,96 @@ export default function Navbar() {
             >
               LinkedIn <Linkedin size={20} />
             </a>
+            <a
+              href="/Rafael_Laidlaw_Resume_2025.pdf"
+              download
+              onClick={closeMenu}
+              className="flex items-center gap-2 text-xl font-semibold ubuntu-font no-underline transition-colors duration-200 hover:text-primary"
+              style={{ color: "#888a8f" }}
+            >
+              Resumé <FiDownload size={16} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Settings menu */}
+      <div
+        className={`fixed inset-0 z-40 flex items-center justify-center py-3 px-4 transition-all duration-300 ease-in-out ${
+          settingsOpen
+            ? "opacity-100"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="w-full max-w-2xl h-full bg-white border border-[#c2c3c7] flex flex-col">
+          {/* Header row */}
+          <div className="flex items-center justify-between px-5 py-3">
+            <div className="p-2">
+              <Menu size={22} color="#888a8f" />
+            </div>
+            <div className="flex flex-col items-center">
+              <span
+                className="text-xl font-bold leading-tight ubuntu-font"
+                style={{ color: "#888a8f" }}
+              >
+                Rafael Laidlaw
+              </span>
+              <span
+                className="text-sm font-semibold leading-tight ubuntu-font tracking-wide -mt-0.5"
+                style={{ color: "#b0b2b8" }}
+              >
+                Web Developer
+              </span>
+            </div>
+            <button
+              onClick={closeSettings}
+              className="p-2 bg-transparent border-none cursor-pointer"
+              aria-label="Close settings"
+            >
+              <X size={22} color="#888a8f" />
+            </button>
+          </div>
+
+          <div className="w-full h-px bg-[#c2c3c7]" />
+
+          {/* Settings options */}
+          <div className="flex-1 flex flex-col items-center justify-center gap-8">
+            <a
+              href="?view=mobile"
+              onClick={closeSettings}
+              className="flex items-center gap-3 text-xl font-semibold ubuntu-font no-underline transition-colors duration-200 hover:text-primary"
+              style={{ color: "#888a8f" }}
+            >
+              <Smartphone size={22} />
+              View Mobile App
+            </a>
+            <a
+              href="/noscript/"
+              onClick={closeSettings}
+              className="flex items-center gap-3 text-xl font-semibold ubuntu-font no-underline transition-colors duration-200 hover:text-primary"
+              style={{ color: "#888a8f" }}
+            >
+              <FileCode size={22} />
+              Turn Off JavaScript
+            </a>
+            <div
+              className="flex flex-col items-center gap-1"
+              style={{ opacity: 0.4 }}
+            >
+              <span
+                className="flex items-center gap-3 text-xl font-semibold ubuntu-font"
+                style={{ color: "#888a8f" }}
+              >
+                <Gamepad2 size={22} />
+                View Portfolio on Gameboy
+              </span>
+              <span
+                className="text-sm ubuntu-font"
+                style={{ color: "#b0b2b8" }}
+              >
+                Coming Soon
+              </span>
+            </div>
           </div>
         </div>
       </div>

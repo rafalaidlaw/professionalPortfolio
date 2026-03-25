@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rafael Laidlaw Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="/usb.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background: #ededed;
+      color: #55575b;
+      line-height: 1.6;
+    }
+
+    a { color: #55575b; text-decoration: none; }
+    a:hover { color: #333; }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ededed;
+      border-bottom: 1px solid #c2c3c7;
+      padding: 0.75rem 0;
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-title {
+      text-align: center;
+    }
+    .nav-title h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #888a8f;
+      line-height: 1.2;
+    }
+    .nav-title p {
+      font-size: 0.875rem;
+      color: #b0b2b8;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #888a8f;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #55575b; }
+
+    /* --- ABOUT --- */
+    .about {
+      padding: 4rem 0 1rem;
+    }
+    .about-layout {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .identity {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+    }
+    .identity img {
+      width: 112px;
+      height: auto;
+    }
+    .identity h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .identity p {
+      font-size: 1.1rem;
+      color: #888a8f;
+      font-weight: 500;
+    }
+
+    /* --- OPEN SOURCE BUBBLES --- */
+    .os-hero {
+      width: 80%;
+      position: relative;
+      min-height: 360px;
+    }
+    .os-bubbles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 0;
+    }
+    .os-bubble {
+      width: 155px;
+      height: 155px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: visible;
+    }
+    .os-bubble img.bubble-bg {
+      position: absolute;
+      width: 158%;
+      height: 158%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .os-bubble span {
+      position: relative;
+      z-index: 1;
+      transform: translate(0px, -9px);
+    }
+    .os-bubble:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .os-label {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .os-label span {
+      display: inline-block;
+      padding: 0.75rem 2.5rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: 0.15em;
+      background: #fff;
+      color: #55575b;
+    }
+
+    /* --- SEPARATOR --- */
+    .separator {
+      border: none;
+      border-top: 1px solid #c2c3c7;
+      margin: 2rem 0;
+    }
+
+    /* --- PROJECTS GRID --- */
+    .projects {
+      padding: 2rem 0;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    /* --- CARD --- */
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 1.25rem 1.25rem 0.5rem;
+    }
+    .card-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .card-header .subtitle {
+      font-size: 0.8rem;
+      color: #888a8f;
+    }
+    .card-body {
+      padding: 0 1.25rem 1.25rem;
+    }
+    .card-body p {
+      font-size: 0.875rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+    .card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* --- TECH BADGES --- */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    .badge {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #d1d5db;
+      color: #888a8f;
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* --- BANNER ADS GRID --- */
+    .banner-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin: 0.75rem 0;
+    }
+    .banner-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+    }
+    .banner-wide {
+      grid-column: span 4;
+    }
+    .banner-tall {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+    .banner-2x {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    /* --- MOTION THUMBNAILS --- */
+    .motion-thumbs {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .motion-thumb {
+      flex: 1;
+      display: block;
+      border-radius: 0.25rem;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      transition: transform 0.2s;
+    }
+    .motion-thumb:hover {
+      transform: scale(1.03);
+    }
+    .motion-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* --- GAMES --- */
+    .games {
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .games h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .game-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .game-link {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background: #55575b;
+      color: #fff;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .game-link:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    /* --- CONTACT --- */
+    .contact {
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .contact h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    .contact > p {
+      color: #888a8f;
+      margin-bottom: 1.5rem;
+    }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      text-align: left;
+    }
+    .contact-form label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+      margin-top: 1rem;
+    }
+    .contact-form label:first-of-type {
+      margin-top: 0;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 0.875rem;
+      background: #fff;
+    }
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .contact-form button {
+      display: block;
+      width: 100%;
+      margin-top: 1.25rem;
+      padding: 0.75rem;
+      background: #55575b;
+      color: #fff;
+      border: none;
+      border-radius: 0.375rem;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background: #333;
+    }
+
+    /* --- BORING SECTION --- */
+    .boring {
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+    .boring a {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      background: #d1d5db;
+      color: #55575b;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    .boring a:hover {
+      background: #f97316;
+      color: #fff;
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.875rem;
+      color: #888a8f;
+      border-top: 1px solid #c2c3c7;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .about-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .identity { width: 100%; }
+      .os-hero { width: 100%; }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        gap: 0.75rem;
+        font-size: 0.8rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .banner-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .banner-wide { grid-column: span 2; }
+      .banner-tall { grid-column: span 1; grid-row: span 1; }
+      .banner-2x { grid-column: span 2; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-title">
+        <h1>Rafael Laidlaw</h1>
+        <p>Web Developer</p>
+      </div>
+      <div class="nav-links">
+        <a href="https://github.com/rafalaidlaw" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/rafalaidlaw/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="/Rafael_Laidlaw_Resume_2025.pdf" download>Resum&eacute;</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-layout">
+        <div class="identity">
+          <img src="/skillcube_20-grey.gif" alt="Skill Cube" />
+          <h2>Rafael Laidlaw</h2>
+          <p>Web Developer</p>
+        </div>
+
+        <div class="os-hero">
+          <div class="os-bubbles">
+            <a href="https://github.com/pixijs/pixijs/pull/11761" target="_blank" rel="noopener noreferrer" class="os-bubble"><img src="/glass-bubble.png" alt="" class="bubble-bg" /><span>PixiJS</span></a>
+            <a href="https://github.com/apify/crawlee/pull/3237" target="_blank" rel="noopener noreferrer" class="os-bubble"><img src="/glass-bubble.png" alt="" class="bubble-bg" /><span>Crawlee</span></a>
+            <a href="https://github.com/hoppscotch/hoppscotch/pull/5231" target="_blank" rel="noopener noreferrer" class="os-bubble"><img src="/glass-bubble.png" alt="" class="bubble-bg" /><span>Hoppscotch</span></a>
+            <a href="https://github.com/altair-graphql" target="_blank" rel="noopener noreferrer" class="os-bubble"><img src="/glass-bubble.png" alt="" class="bubble-bg" /><span>Altair<br>GraphQL</span></a>
+            <a href="https://docs.godotengine.org/en/stable/contributing/workflow/bug_triage_guidelines.html" target="_blank" rel="noopener noreferrer" class="os-bubble"><img src="/glass-bubble.png" alt="" class="bubble-bg" /><span>Godot<br>Engine</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="os-label">
+        <span>OPEN SOURCE</span>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="separator container" />
+
+  <!-- FEATURED PROJECTS -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="projects-grid">
+
+        <!-- LEFT COLUMN -->
+        <div>
+          <!-- E-Commerce -->
+          <div class="card" style="margin-bottom:1.5rem">
+            <div class="card-header">
+              <h3>E-Commerce Website</h3>
+              <p class="subtitle">Click to Visit</p>
+            </div>
+            <a href="https://cosmic-seahorse-cfa092.netlify.app/" target="_blank" rel="noopener noreferrer">
+              <img src="/Retro_Still_Image.png" alt="E-Commerce Website" class="card-img" />
+            </a>
+            <div class="card-body">
+              <div class="badges">
+                <span class="badge">React</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">GraphQL</span>
+                <span class="badge">Hooks</span>
+                <span class="badge">Stripe</span>
+                <span class="badge">Firebase</span>
+                <span class="badge">Redux</span>
+                <span class="badge">Thunk</span>
+                <span class="badge">Saga</span>
+                <span class="badge">React-Hook-Form</span>
+              </div>
+              <p>React storefront for local Toronto vendor.</p>
+            </div>
+          </div>
+
+          <!-- Banner Ads -->
+          <div class="card" style="margin-bottom:1.5rem">
+            <div class="card-header">
+              <h3>Banner Ads</h3>
+            </div>
+            <div class="card-body">
+              <div class="banner-grid">
+                <img src="/banners/longWestAd-STILL.png" alt="WestJet Ad" class="banner-wide" />
+                <img src="/banners/zooAd-STILL.png" alt="ZooCasa Ad" class="banner-tall" />
+                <img src="/banners/rogersSquare-STILL.png" alt="Rogers Ad" />
+                <img src="/banners/grid1-STILL.png" alt="Grid Ad" />
+                <img src="/banners/grid-ad-5-STILL.png" alt="Grid Ad" />
+                <img src="/banners/grid-ad-6-STILL.png" alt="Grid Ad" />
+                <img src="/banners/grid-ad-7-STILL.png" alt="Grid Ad" />
+                <img src="/banners/grid-ad-8-STILL.png" alt="Grid Ad" />
+                <img src="/banners/grid-ad-9-STILL.png" alt="Grid Ad" />
+                <img src="/banners/boskAd-STILL.png" alt="Bosk Ad" />
+                <img src="/banners/grid-ad-11-STILL.png" alt="Grid Ad" />
+                <img src="/banners/grid-ad-10-STILL.png" alt="Grid Ad" />
+              </div>
+              <p>Service work for Publicis and Tribal DDB implementing functional banner ads. Initially built with ActionScript we moved to Javascript to meet industry requirements. Building ads with reusable code saved on memory and allowed for quick production and updating of multiple iterations for evolving ad campaigns.</p>
+            </div>
+          </div>
+
+          <!-- PixiSlots -->
+          <div class="card">
+            <div class="card-header">
+              <h3>PixiSlots</h3>
+            </div>
+            <div class="card-body">
+              <p>A slot machine game built with PixiJS.</p>
+              <p style="margin-top:0.75rem"><a href="https://rafalaidlaw.github.io/pixislots/" target="_blank" rel="noopener noreferrer" style="font-weight:600;color:#55575b;border-bottom:1px solid #c2c3c7">Play PixiSlots &rarr;</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div>
+          <!-- Outlier AI -->
+          <div class="card" style="margin-bottom:1.5rem">
+            <div class="card-header">
+              <h3>Outlier AI</h3>
+            </div>
+            <div class="card-body">
+              <p>Evaluate JavaScript-related datasets to train machine learning models for code understanding and analysis. My role includes annotating code snippets, identifying patterns, and creating training scenarios that help improve model performance.</p>
+            </div>
+          </div>
+
+          <!-- Motion Graphics -->
+          <div class="card" style="margin-bottom:1.5rem">
+            <div class="card-header">
+              <h3>Motion Graphics</h3>
+              <p class="subtitle">Click thumbnail to watch</p>
+            </div>
+            <div class="card-body">
+              <div class="motion-thumbs">
+                <a href="https://www.youtube.com/watch?v=vgr5Pq0kLN8" target="_blank" rel="noopener noreferrer" class="motion-thumb">
+                  <img src="/banners/attic-cover-sprite.png" alt="Attic Jump" />
+                </a>
+                <a href="https://vimeo.com/950860369" target="_blank" rel="noopener noreferrer" class="motion-thumb">
+                  <img src="/banners/anim-demo-sprite.png" alt="Demo Reel" />
+                </a>
+                <a href="https://www.youtube.com/watch?v=g9r4KwkOkuY" target="_blank" rel="noopener noreferrer" class="motion-thumb">
+                  <img src="/way-too-good-cover-sprite.png" alt="Way Too Good" />
+                </a>
+              </div>
+              <p style="margin-top:0.5rem;font-size:0.8rem;color:#888a8f">Attic Jump &bull; Television Demo Reel &bull; Way Too Good</p>
+            </div>
+          </div>
+
+          <!-- ThreeJS -->
+          <div class="card">
+            <div class="card-header">
+              <h3>ThreeJS</h3>
+            </div>
+            <div class="card-body">
+              <p>WIP: Custom Modded Gameboy Builder. Shoppers will be able to build and visualize their modded Gameboy, as well as see the price, then add the gameboy to their cart.</p>
+              <p style="margin-top:0.75rem"><a href="https://rafalaidlaw.github.io/Three.js-Gameboy-Mods/" target="_blank" rel="noopener noreferrer" style="font-weight:600;color:#55575b;border-bottom:1px solid #c2c3c7">Try Gameboy Builder &rarr;</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="separator container" />
+
+  <!-- GAMES -->
+  <section id="games" class="games">
+    <div class="container">
+      <h2>Games built with Unity, Godot and PhaserJS</h2>
+      <div class="game-links">
+        <a href="https://retromodgod.itch.io/dinogame-clone" target="_blank" rel="noopener noreferrer" class="game-link">Dinogame</a>
+        <a href="https://retromodgod.itch.io/fbird-clone-demo" target="_blank" rel="noopener noreferrer" class="game-link">Flappy Bird</a>
+        <a href="https://itch.io/embed-upload/13145428?color=333333" target="_blank" rel="noopener noreferrer" class="game-link">Boy With Stick</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separator container" />
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p>I'm always interested in new opportunities and exciting projects.</p>
+
+      <form
+        class="contact-form"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/noscript/success.html"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-row">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+          </div>
+        </div>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- BORING SECTION -->
+  <div class="boring">
+    <a href="https://rafaellaidlawportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">
+      Does my portfolio lack color? Click here to make it snazzy.
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      &copy; 2025 Rafael Laidlaw
+    </div>
+  </footer>
+
+</body>
+</html>
