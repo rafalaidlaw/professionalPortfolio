@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Github, Linkedin, Menu, X, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Menu, X } from "lucide-react";
 import { MdOutlineVideogameAsset } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
 
