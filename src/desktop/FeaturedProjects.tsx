@@ -1,4 +1,3 @@
-import ECommerceFeature from "./ECommerceFeature";
 import OutlierAICard from "./OutlierAICard";
 import BannerAdsCard from "./BannerAdsCard";
 import MotionGraphicsCard from "./MotionGraphicsCard";
@@ -13,7 +12,6 @@ const FeaturedProjects = () => (
       <div className="grid grid-cols-2 gap-4">
         {/* Left column */}
         <div className="min-w-0 space-y-4">
-          <ECommerceFeature />
           <BannerAdsCard />
           <PixiSlotsCard />
         </div>

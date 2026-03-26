@@ -58,6 +58,7 @@ const About = () => {
     <section
       id="about"
       className="container mx-auto px-4 pt-16 overflow-visible"
+      style={{ paddingBottom: "clamp(40px, 8vh, 120px)" }}
     >
       {/* ThreeJS Bubble App */}
       <div className="w-full relative">
@@ -71,12 +72,12 @@ const About = () => {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-bold block hover:text-primary transition-colors"
+              className="text-base font-bold block hover:text-primary transition-colors"
               style={{ color: "#55575b" }}
             >
               {project.label}
             </a>
-            <p className="text-xs mt-1" style={{ color: "#888a8f" }}>
+            <p className="text-sm mt-1" style={{ color: "#888a8f" }}>
               {project.description}
             </p>
             {/* Triangle tail */}
@@ -127,11 +128,12 @@ const About = () => {
           src="https://rafalaidlaw.github.io/Bubble-ThreeJS/"
           title="Bubble ThreeJS"
           className="w-full border-none"
-          style={{ height: "600px", background: "transparent" }}
+          style={{ height: "clamp(400px, 60vh, 700px)", background: "transparent" }}
           allow="accelerometer; autoplay"
           allowTransparency={true}
         />
       </div>
+
     </section>
   );
 };

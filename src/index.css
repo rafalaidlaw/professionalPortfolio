@@ -310,6 +310,8 @@ html {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 40;
 }
 
@@ -324,5 +326,19 @@ html {
   display: flex;
   flex-direction: column;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.mobile-settings-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(280px, 85vw);
+  background: white;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease;
 }

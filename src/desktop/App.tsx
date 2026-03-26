@@ -7,6 +7,8 @@ import FeaturedProjects from "./FeaturedProjects"
 import InternetBanner from "./InternetBanner"
 // import BattleSwitchPrototype from "./battleSwitchPrototype"
 // import BattlePrototype from "./battlePrototype"
+import ECommerceHero from "./ECommerceHero"
+import Profile from "./Profile"
 import Contact from "./Contact"
 import BoringSection from "./BoringSection"
 import Footer from "./Footer"
@@ -20,6 +22,8 @@ function DesktopApp() {
         <div className="pt-20">
         <About />
 
+        <ECommerceHero />
+
         <div className="mt-16">
           <Separator />
 
@@ -32,6 +36,8 @@ function DesktopApp() {
         <Games />
 
         <Separator />
+
+        <Profile />
 
         {/* Contact Section */}
         <div className="-mt-2 -mb-4">

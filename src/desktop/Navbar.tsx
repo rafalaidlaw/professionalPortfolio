@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
-import { Github, Linkedin, Menu, X, Settings, Smartphone, FileCode, Gamepad2 } from "lucide-react";
+import { Github, Linkedin, Menu, X, Settings, FileCode, Gamepad2 } from "lucide-react";
 import { MdOutlineVideogameAsset } from "react-icons/md";
+import { RiCellphoneLine } from "react-icons/ri";
 import { FiDownload } from "react-icons/fi";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 
@@ -252,7 +253,7 @@ export default function Navbar() {
               className="flex items-center gap-3 text-xl font-semibold ubuntu-font no-underline transition-colors duration-200 hover:text-primary"
               style={{ color: "#888a8f" }}
             >
-              <Smartphone size={22} />
+              <RiCellphoneLine size={22} />
               View Mobile App
             </a>
             <a
