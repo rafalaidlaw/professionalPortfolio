@@ -1,9 +1,42 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import RafaCard from "./RafaCard";
 
 const ECommerceHero = () => {
   const [hovered, setHovered] = useState(false);
   const [animate, setAnimate] = useState(false);
+  const [hoveredTip, setHoveredTip] = useState<{
+    title: string;
+    description: string;
+  } | null>(null);
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const [titleScale, setTitleScale] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = titleRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const shrinkStart = vh * 0.2;
+      const growEnd = vh * 0.75;
+
+      if (rect.top <= 0) {
+        setTitleScale(0);
+      } else if (rect.top < shrinkStart) {
+        setTitleScale(rect.top / shrinkStart);
+      } else if (rect.top > vh) {
+        setTitleScale(0);
+      } else if (rect.top > growEnd) {
+        setTitleScale((vh - rect.top) / (vh - growEnd));
+      } else {
+        setTitleScale(1);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleMouseEnter = () => {
     setAnimate(true);
@@ -20,7 +53,21 @@ const ECommerceHero = () => {
   };
 
   return (
-    <section className="w-full pt-32 pb-20" style={{ background: "#63666a" }}>
+    <section
+      className="w-full pt-32 pb-20 relative"
+      style={{ background: "#63666a" }}
+    >
+      {/* Rafa - top left */}
+      <div className="absolute bottom-50 left-72 z-20">
+        <RafaCard
+          bubble={hoveredTip}
+          bubblePosition="above"
+          bubbleBorderSide="left"
+          bubbleBorderColor="#999999"
+          cardClassName="bg-white border border-[#999999] border-l-[10px] border-b-[5px] border-r-0 rounded-none shadow-sm p-3 flex flex-col items-center w-full h-full"
+        />
+      </div>
+
       <div className="container mx-auto px-4 flex flex-col items-center">
         {/* 3D angled image + reflection + title card */}
         <div className="relative">
@@ -36,12 +83,7 @@ const ECommerceHero = () => {
             <button
               type="button"
               aria-label="Visit E-Commerce Website"
-              onClick={() =>
-                window.open(
-                  "https://cosmic-seahorse-cfa092.netlify.app/",
-                  "_blank",
-                )
-              }
+              onClick={() => window.open("https://retromodgod.com/", "_blank")}
               className="focus:outline-none cursor-pointer bg-transparent border-none p-0 m-0"
               style={{
                 transform: animate
@@ -87,12 +129,17 @@ const ECommerceHero = () => {
 
           {/* Title - positioned to the right */}
           <div
-            className="absolute bottom-24 px-4 py-2 rounded-none text-left"
+            ref={titleRef}
+            className="absolute top-14 px-4 py-2 rounded-none text-left"
             style={{
               background: "#ededed",
               right: "-440px",
-              borderRight: "10px solid #444444",
-              borderBottom: "5px solid #444444",
+              borderRight: "10px solid #999999",
+              borderBottom: "5px solid #999999",
+              transform: `scale(${titleScale})`,
+              opacity: titleScale,
+              transformOrigin: "center center",
+              transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
             }}
           >
             <h2
@@ -161,12 +208,13 @@ const ECommerceHero = () => {
           ].map(({ label, tip }) => (
             <span
               key={label}
-              className="group relative inline-block border border-gray-400 text-gray-300 rounded px-3 py-1 font-bold text-xs ubuntu-font uppercase tracking-wide cursor-default transition-colors duration-200 hover:bg-[#ededed] hover:text-[#55575b] hover:border-[#55575b]"
+              className="relative inline-block border border-gray-400 text-gray-300 rounded px-3 py-1 font-bold text-xs ubuntu-font uppercase tracking-wide cursor-default transition-colors duration-200 hover:bg-[#ededed] hover:text-[#55575b] hover:border-[#55575b]"
+              onMouseEnter={() =>
+                setHoveredTip({ title: label, description: tip })
+              }
+              onMouseLeave={() => setHoveredTip(null)}
             >
               {label}
-              <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1.5 bg-[#ededed] text-[#55575b] text-xs ubuntu-font normal-case tracking-normal font-medium rounded shadow-md whitespace-nowrap z-50 pointer-events-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-150">
-                {tip}
-              </span>
             </span>
           ))}
         </div>

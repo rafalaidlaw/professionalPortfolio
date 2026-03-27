@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useState, useEffect, useRef } from "react";
+import RafaCard from "./RafaCard";
 
 const openSourceProjects: Record<
   string,
@@ -39,6 +39,34 @@ const openSourceProjects: Record<
 
 const About = () => {
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
+  const ossRef = useRef<HTMLDivElement>(null);
+  const [ossScale, setOssScale] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = ossRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const shrinkStart = vh * 0.1; // 1/10 from top
+      const growEnd = vh * 0.9; // 1/10 from bottom
+
+      if (rect.top <= 0) {
+        setOssScale(0);
+      } else if (rect.top < shrinkStart) {
+        setOssScale(rect.top / shrinkStart);
+      } else if (rect.top > vh) {
+        setOssScale(0);
+      } else if (rect.top > growEnd) {
+        setOssScale((vh - rect.top) / (vh - growEnd));
+      } else {
+        setOssScale(1);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
@@ -62,66 +90,36 @@ const About = () => {
     >
       {/* ThreeJS Bubble App */}
       <div className="w-full relative">
-        {/* Speech bubble - appears on hover */}
-        {project && (
-          <div
-            className="absolute bottom-64 z-20 bg-white border border-[#cccccc] border-r-[6px] border-b-[4px] rounded-none shadow-md px-4 py-3 ubuntu-font"
-            style={{ width: "200px", right: "calc(6rem + 80px - 200px)" }}
-          >
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-base font-bold block hover:text-primary transition-colors"
-              style={{ color: "#55575b" }}
-            >
-              {project.label}
-            </a>
-            <p className="text-sm mt-1" style={{ color: "#888a8f" }}>
-              {project.description}
-            </p>
-            {/* Triangle tail */}
-            <div
-              className="absolute left-8"
-              style={{
-                bottom: "-26px",
-                width: 0,
-                height: 0,
-                borderLeft: "8px solid transparent",
-                borderRight: "11px solid transparent",
-                borderTop: "26px solid #cccccc",
-              }}
-            />
-            <div
-              className="absolute left-8"
-              style={{
-                bottom: "-22px",
-                width: 0,
-                height: 0,
-                borderLeft: "7px solid transparent",
-                borderRight: "8px solid transparent",
-                borderTop: "23px solid #fff",
-              }}
-            />
-          </div>
-        )}
+        {/* Open Source Contributions label - left */}
+        <div
+          ref={ossRef}
+          className="absolute left-16 top-1/5 z-10 bg-white border border-[#cccccc] rounded-none shadow-sm flex items-center justify-center ubuntu-font"
+          style={{
+            width: "160px",
+            height: "160px",
+            borderLeftWidth: "10px",
+            borderBottomWidth: "5px",
+            transform: `scale(${ossScale})`,
+            opacity: ossScale,
+            transformOrigin: "center center",
+            transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
+          }}
+        >
+          <h3 className="text-lg font-bold leading-tight" style={{ color: "#55575b" }}>
+            Open
+            <br />
+            Source
+            <br />
+            Contributions
+          </h3>
+        </div>
 
         {/* Rafa card - bottom right */}
-        <div
-          className="absolute bottom-34 right-24 z-10 bg-white border border-[#cccccc] border-r-[6px] border-b-[4px] rounded-none shadow-sm p-3 flex flex-col items-center"
-          style={{ width: "80px", height: "80px" }}
-        >
-          <Avatar className="h-10 w-10">
-            <AvatarFallback className="text-xs text-gray-400 bg-gray-100">
-              RL
-            </AvatarFallback>
-          </Avatar>
-          <span
-            className="text-xs font-medium mt-1"
-            style={{ color: "#55575b" }}
-          >
-            Rafa
-          </span>
+        <div className="absolute bottom-34 right-24 z-10">
+          <RafaCard
+            bubble={project ? { title: project.label, description: project.description, url: project.url } : null}
+            bubblePosition="above"
+          />
         </div>
 
         <iframe

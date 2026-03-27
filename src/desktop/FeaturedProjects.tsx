@@ -1,5 +1,4 @@
 import OutlierAICard from "./OutlierAICard";
-import BannerAdsCard from "./BannerAdsCard";
 import MotionGraphicsCard from "./MotionGraphicsCard";
 import ThreeJSProjectCard from "./ThreeJSProjectCard";
 import PixiSlotsCard from "./PixiSlotsCard";
@@ -12,7 +11,6 @@ const FeaturedProjects = () => (
       <div className="grid grid-cols-2 gap-4">
         {/* Left column */}
         <div className="min-w-0 space-y-4">
-          <BannerAdsCard />
           <PixiSlotsCard />
         </div>
         {/* Right column */}

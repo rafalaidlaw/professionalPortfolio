@@ -3,11 +3,10 @@ import About from "./About.tsx"
 import { Separator } from "@/components/ui/separator"
 import Games from "./Games"
 import FeaturedProjects from "./FeaturedProjects"
-// @ts-ignore: No type declarations for InternetBanner.jsx
-import InternetBanner from "./InternetBanner"
 // import BattleSwitchPrototype from "./battleSwitchPrototype"
 // import BattlePrototype from "./battlePrototype"
 import ECommerceHero from "./ECommerceHero"
+import BannerAdsHero from "./BannerAdsHero"
 import Profile from "./Profile"
 import Contact from "./Contact"
 import BoringSection from "./BoringSection"
@@ -23,6 +22,8 @@ function DesktopApp() {
         <About />
 
         <ECommerceHero />
+
+        <BannerAdsHero />
 
         <div className="mt-16">
           <Separator />
