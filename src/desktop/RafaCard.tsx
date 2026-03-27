@@ -21,24 +21,53 @@ const RafaCard = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
 
+  // Bubble text transition state
+  const [displayedBubble, setDisplayedBubble] = useState(bubble);
+  const [bubblePhase, setBubblePhase] = useState<"visible" | "out" | "in">("visible");
+  const cardFullyVisible = scale >= 1;
+
+  useEffect(() => {
+    if (bubble?.description === displayedBubble?.description) return;
+    if (!cardFullyVisible) {
+      // Card not visible yet, just swap silently
+      setDisplayedBubble(bubble);
+      return;
+    }
+
+    // Phase 1: fade out old bubble (up + fade away)
+    setBubblePhase("out");
+
+    const outTimer = setTimeout(() => {
+      // Phase 2: swap content and fade in new bubble
+      setDisplayedBubble(bubble);
+      setBubblePhase("in");
+
+      const inTimer = setTimeout(() => {
+        setBubblePhase("visible");
+      }, 350);
+
+      return () => clearTimeout(inTimer);
+    }, 300);
+
+    return () => clearTimeout(outTimer);
+  }, [bubble?.description, cardFullyVisible]);
+
   useEffect(() => {
     const handleScroll = () => {
       const el = cardRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      const shrinkStart = vh * 0.2; // start shrinking at 1/5 from top
-      const growEnd = vh * 0.8; // finish growing at 4/5 from top
+      const shrinkStart = vh * 0.2;
+      const growEnd = vh * (5 / 7);
 
       if (rect.top <= 0) {
         setScale(0);
       } else if (rect.top < shrinkStart) {
-        // shrink as it approaches the top
         setScale(rect.top / shrinkStart);
       } else if (rect.top > vh) {
         setScale(0);
       } else if (rect.top > growEnd) {
-        // grow as it enters from the bottom
         setScale((vh - rect.top) / (vh - growEnd));
       } else {
         setScale(1);
@@ -48,7 +77,18 @@ const RafaCard = ({
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const bubbleEl = bubble && (
+  const bubbleTransformStyle = (() => {
+    switch (bubblePhase) {
+      case "out":
+        return { opacity: 0, transform: "translateY(-12px) scaleY(0.92)", transition: "opacity 0.3s ease, transform 0.3s ease" };
+      case "in":
+        return { opacity: 1, transform: "translateY(0px) scaleY(1)", transition: "opacity 0.35s ease, transform 0.35s ease" };
+      default:
+        return { opacity: 1, transform: "translateY(0px) scaleY(1)", transition: "opacity 0.35s ease, transform 0.35s ease" };
+    }
+  })();
+
+  const bubbleEl = displayedBubble && (
     <div
       className="relative z-20 bg-white border rounded-none shadow-md px-4 py-4 ubuntu-font"
       style={{
@@ -57,28 +97,30 @@ const RafaCard = ({
         borderRightWidth: bubbleBorderSide === "right" ? "10px" : "1px",
         borderLeftWidth: bubbleBorderSide === "left" ? "10px" : "1px",
         borderBottomWidth: bubbleBorderSide === "left" ? "5px" : "4px",
+        ...bubbleTransformStyle,
+        transformOrigin: "bottom center",
       }}
     >
-      {bubble.url ? (
+      {displayedBubble.url ? (
         <a
-          href={bubble.url}
+          href={displayedBubble.url}
           target="_blank"
           rel="noopener noreferrer"
           className="text-base font-bold block hover:text-primary transition-colors"
           style={{ color: "#55575b" }}
         >
-          {bubble.title}
+          {displayedBubble.title}
         </a>
       ) : (
         <span
           className="text-base font-bold block"
           style={{ color: "#55575b" }}
         >
-          {bubble.title}
+          {displayedBubble.title}
         </span>
       )}
       <p className="text-sm mt-1" style={{ color: "#888a8f" }}>
-        {bubble.description}
+        {displayedBubble.description}
       </p>
 
       {/* Triangle tail */}
@@ -156,7 +198,17 @@ const RafaCard = ({
     >
       {/* Bubble - absolutely positioned */}
       {bubblePosition === "above" && (
-        <div className="absolute bottom-full left-0 mb-7">{bubbleEl}</div>
+        <div
+          className="absolute bottom-full left-0 mb-7"
+          style={{
+            transform: cardFullyVisible ? "scale(1)" : "scale(0)",
+            opacity: cardFullyVisible ? 1 : 0,
+            transformOrigin: "bottom left",
+            transition: "transform 0.15s ease-out, opacity 0.15s ease-out",
+          }}
+        >
+          {bubbleEl}
+        </div>
       )}
 
       {/* Rafa card */}
@@ -184,7 +236,17 @@ const RafaCard = ({
 
       {/* Bubble - below */}
       {bubblePosition === "below" && (
-        <div className="absolute top-full left-0 mt-7">{bubbleEl}</div>
+        <div
+          className="absolute top-full left-0 mt-7"
+          style={{
+            transform: cardFullyVisible ? "scale(1)" : "scale(0)",
+            opacity: cardFullyVisible ? 1 : 0,
+            transformOrigin: "top left",
+            transition: "transform 0.15s ease-out, opacity 0.15s ease-out",
+          }}
+        >
+          {bubbleEl}
+        </div>
       )}
     </div>
   );
