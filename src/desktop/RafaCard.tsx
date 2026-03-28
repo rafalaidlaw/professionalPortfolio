@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { IoCloseCircle } from "react-icons/io5";
+import { LiaRingSolid } from "react-icons/lia";
+import { GiLibertyWing } from "react-icons/gi";
+import { useRafaCard } from "./RafaCardContext";
 
 interface RafaCardProps {
   bubble?: { title: string; description: string; url?: string } | null;
@@ -18,11 +21,13 @@ const RafaCard = ({
   cardClassName,
   cardStyle,
 }: RafaCardProps) => {
+  const { reviveKey, reportDismiss } = useRafaCard();
   const borderColor = bubbleBorderColor || "#cccccc";
   const cardRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [hovered, setHovered] = useState(false);
   const [dismissing, setDismissing] = useState(false);
+  const [fading, setFading] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
   // Bubble text transition state
@@ -79,6 +84,13 @@ const RafaCard = ({
       const shrinkStart = vh * 0.2;
       const growEnd = vh * (5 / 7);
 
+      const offScreen = rect.top <= 0 || rect.top > vh;
+      if (offScreen && dismissed) {
+        setDismissed(false);
+        setDismissing(false);
+        setFading(false);
+      }
+
       if (rect.top <= 0) {
         setScale(0);
       } else if (rect.top < shrinkStart) {
@@ -94,7 +106,7 @@ const RafaCard = ({
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [dismissed]);
   const bubbleTransformStyle = (() => {
     switch (bubblePhase) {
       case "out":
@@ -213,18 +225,37 @@ const RafaCard = ({
     </div>
   );
 
-  if (dismissed) return null;
+  // Reset when reviveAll is triggered
+  useEffect(() => {
+    setDismissing(false);
+    setFading(false);
+    setDismissed(false);
+  }, [reviveKey]);
+
+  if (dismissed) return <div ref={cardRef} style={{ width: 60, height: 60, visibility: "hidden" }} />;
 
   const handleDismiss = () => {
     setDismissing(true);
-    setTimeout(() => setDismissed(true), 600);
+    setTimeout(() => {
+      setFading(true);
+    }, 250);
+    setTimeout(() => {
+      setDismissed(true);
+      reportDismiss();
+    }, 850);
   };
 
-  const dismissStyle = dismissing
+  const dismissStyle = fading
     ? {
         transform: "scale(0)",
         opacity: 0,
         transition: "transform 0.5s ease-in, opacity 0.5s ease-in",
+      }
+    : dismissing
+    ? {
+        transform: `scale(${scale})`,
+        opacity: scale,
+        transition: "none",
       }
     : {
         transform: `scale(${scale})`,
@@ -260,6 +291,28 @@ const RafaCard = ({
         </div>
       )}
 
+      {/* Halo */}
+      {dismissing && (
+        <span
+          className="absolute select-none"
+          style={{ top: "-26px", left: "50%", color: "#aaa", transform: "translateX(-50%) rotateX(60deg) scale(2.5)" }}
+        ><LiaRingSolid size={20} /></span>
+      )}
+
+      {/* Wings */}
+      {dismissing && (
+        <>
+          <span
+            className="absolute select-none"
+            style={{ top: "50%", left: "-20px", color: "#aaa", transform: "translateY(-50%) scaleX(-1)", zIndex: -1 }}
+          ><GiLibertyWing size={24} /></span>
+          <span
+            className="absolute select-none"
+            style={{ top: "50%", right: "-20px", color: "#aaa", transform: "translateY(-50%)", zIndex: -1 }}
+          ><GiLibertyWing size={24} /></span>
+        </>
+      )}
+
       {/* Rafa card */}
       <div
         className={`relative ${
@@ -269,26 +322,22 @@ const RafaCard = ({
         style={cardStyle}
       >
         <div
-          className="flex flex-col items-center justify-center select-none h-full"
-          style={{
-            color: "#aaa",
-            marginLeft: bubbleBorderSide === "left" ? "4px" : undefined,
-            marginRight: bubbleBorderSide === "right" ? "4px" : undefined,
-          }}
+          className="flex flex-col items-center justify-center select-none h-full whitespace-nowrap"
+          style={{ color: "#aaa" }}
         >
           {dismissing ? (
             <>
-              <span className="text-xs tracking-[0.3em]">x x</span>
+              <span className="text-xs">x{"\u2003"}x</span>
               <span className="text-xs">.</span>
             </>
           ) : bubble ? (
             <>
-              <span className="text-xs tracking-[0.3em]">° °</span>
+              <span className="text-xs">°{"\u2003"}°</span>
               <span className="text-xs">O</span>
             </>
           ) : (
             <>
-              <span className="text-xs tracking-[0.3em]">⌣&nbsp;&nbsp;⌣</span>
+              <span className="text-xs">⌣{"\u2003\u2003"}⌣</span>
               <span className="text-xs">_</span>
             </>
           )}

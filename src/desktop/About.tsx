@@ -43,6 +43,12 @@ const About = () => {
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
   const ossRef = useRef<HTMLDivElement>(null);
   const [ossScale, setOssScale] = useState(1);
+  const [ossReady, setOssReady] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setOssReady(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,9 +108,9 @@ const About = () => {
             borderLeftWidth: "10px",
             borderBottomWidth: "5px",
             transform: `scale(${ossScale})`,
-            opacity: ossScale,
+            opacity: ossReady ? ossScale : 0,
             transformOrigin: "center center",
-            transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
+            transition: "transform 0.1s ease-out, opacity 0.5s ease-out",
           }}
         >
           <h3 className="text-lg font-bold leading-tight" style={{ color: "#55575b" }}>
@@ -118,7 +124,13 @@ const About = () => {
 
         {/* Rafa card - bottom right */}
         {rafaVisible && (
-        <div className="absolute bottom-34 right-24 z-10">
+        <div
+          className="absolute bottom-34 right-24 z-10"
+          style={{
+            opacity: ossReady ? 1 : 0,
+            transition: "opacity 0.5s ease-out",
+          }}
+        >
           <RafaCard
             bubble={project ? { title: project.label, description: project.description, url: project.url } : null}
             bubblePosition="above"

@@ -268,12 +268,24 @@ export default function Navbar() {
               Turn Off JavaScript
             </a>
             <button
-              onClick={() => { rafaCard.toggle(); closeSettings(); }}
+              onClick={() => {
+                if (rafaCard.anyDismissed) {
+                  rafaCard.reviveAll();
+                } else {
+                  rafaCard.toggle();
+                }
+                closeSettings();
+              }}
               className="flex items-center gap-3 text-xl font-semibold ubuntu-font bg-transparent border-none cursor-pointer transition-colors duration-200 hover:text-primary"
               style={{ color: "#888a8f" }}
             >
-              {rafaCard.visible ? <UserRoundX size={22} /> : <UserRound size={22} />}
-              {rafaCard.visible ? "Turn Off Assistant" : "Turn On Assistant"}
+              {rafaCard.anyDismissed ? (
+                <><UserRound size={22} /> Revive All Assistants</>
+              ) : rafaCard.visible ? (
+                <><UserRoundX size={22} /> Turn Off Assistant</>
+              ) : (
+                <><UserRound size={22} /> Turn On Assistant</>
+              )}
             </button>
             <div
               className="flex flex-col items-center gap-1"
