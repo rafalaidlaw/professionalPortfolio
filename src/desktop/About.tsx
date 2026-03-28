@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import RafaCard from "./RafaCard";
+import { useRafaCard } from "./RafaCardContext";
 
 const openSourceProjects: Record<
   string,
@@ -38,6 +39,7 @@ const openSourceProjects: Record<
 };
 
 const About = () => {
+  const { visible: rafaVisible } = useRafaCard();
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
   const ossRef = useRef<HTMLDivElement>(null);
   const [ossScale, setOssScale] = useState(1);
@@ -115,12 +117,14 @@ const About = () => {
         </div>
 
         {/* Rafa card - bottom right */}
+        {rafaVisible && (
         <div className="absolute bottom-34 right-24 z-10">
           <RafaCard
             bubble={project ? { title: project.label, description: project.description, url: project.url } : null}
             bubblePosition="above"
           />
         </div>
+        )}
 
         <iframe
           src="https://rafalaidlaw.github.io/Bubble-ThreeJS/"

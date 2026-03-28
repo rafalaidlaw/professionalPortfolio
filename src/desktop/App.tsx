@@ -12,6 +12,7 @@ import Profile from "./Profile"
 import Contact from "./Contact"
 import BoringSection from "./BoringSection"
 import Footer from "./Footer"
+import { RafaCardProvider } from "./RafaCardContext"
 
 const PRELOAD_IMAGES = [
   "/Retro_Still_Image.png",
@@ -54,6 +55,7 @@ function DesktopApp() {
       )}
 
       {loaded && (
+        <RafaCardProvider>
         <div className="min-h-screen bg-background">
           <Navbar />
 
@@ -89,6 +91,7 @@ function DesktopApp() {
           <Footer />
           </div>
         </div>
+      </RafaCardProvider>
       )}
       {/* <BattleSwitchPrototype /> */}
     </>

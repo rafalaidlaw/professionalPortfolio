@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import RafaCard from "./RafaCard";
+import { useRafaCard } from "./RafaCardContext";
 
 type BannerAd = {
   key: string;
@@ -84,10 +85,12 @@ const bannerAds: BannerAd[] = [
 ];
 
 const BannerAdsHero = () => {
+  const { visible: rafaVisible } = useRafaCard();
   const [rotation, setRotation] = useState(0);
   const [changeCount, setChangeCount] = useState(0);
   const titleRef = useRef<HTMLDivElement>(null);
   const [titleScale, setTitleScale] = useState(1);
+  const [sectionHovered, setSectionHovered] = useState(false);
 
   const len = bannerAds.length;
   const angleStep = 360 / len;
@@ -161,6 +164,8 @@ const BannerAdsHero = () => {
     <section
       className="w-full py-10 relative"
       style={{ background: "#333437" }}
+      onMouseEnter={() => setSectionHovered(true)}
+      onMouseLeave={() => setSectionHovered(false)}
     >
       <div className="container mx-auto px-4 flex flex-col items-center">
         {/* Title card - left positioned (scroll-based scale) */}
@@ -169,7 +174,7 @@ const BannerAdsHero = () => {
           className="absolute top-10 left-72 z-20"
           style={{
             transform: `scale(${titleScale})`,
-            transformOrigin: "top left",
+            transformOrigin: "center center",
             transition: "transform 0.12s ease-out",
           }}
         >
@@ -191,18 +196,20 @@ const BannerAdsHero = () => {
           </div>
         </div>
         {/* Rafa */}
+        {rafaVisible && (
         <div className="absolute bottom-10 right-72 z-20">
           <RafaCard
-            bubble={{
+            bubble={sectionHovered ? {
               title: "Banner Ads",
               description: bannerAds[currentIndex].bubbleText,
-            }}
+            } : null}
             bubblePosition="above"
             bubbleBorderSide="right"
             bubbleBorderColor="#999999"
             cardClassName="bg-white border border-[#999999] border-r-[10px] border-b-[5px] border-l-0 rounded-none shadow-sm p-3 flex flex-col items-center w-full h-full"
           />
         </div>
+        )}
 
         {/* 3D Cylinder Carousel */}
         <div

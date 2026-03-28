@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { IoCloseCircle } from "react-icons/io5";
 
 interface RafaCardProps {
   bubble?: { title: string; description: string; url?: string } | null;
@@ -20,10 +21,15 @@ const RafaCard = ({
   const borderColor = bubbleBorderColor || "#cccccc";
   const cardRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
+  const [hovered, setHovered] = useState(false);
+  const [dismissing, setDismissing] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
 
   // Bubble text transition state
   const [displayedBubble, setDisplayedBubble] = useState(bubble);
-  const [bubblePhase, setBubblePhase] = useState<"visible" | "out" | "in">("visible");
+  const [bubblePhase, setBubblePhase] = useState<"visible" | "out" | "in">(
+    "visible",
+  );
   const cardFullyVisible = scale >= 1;
 
   useEffect(() => {
@@ -34,19 +40,31 @@ const RafaCard = ({
       return;
     }
 
+    // Appearing from nothing — skip "out", go straight to "in" with squash+fade
+    if (!displayedBubble && bubble) {
+      setDisplayedBubble(bubble);
+      setBubblePhase("in");
+      const inTimer = setTimeout(() => {
+        setBubblePhase("visible");
+      }, 350);
+      return () => clearTimeout(inTimer);
+    }
+
     // Phase 1: fade out old bubble (up + fade away)
     setBubblePhase("out");
 
     const outTimer = setTimeout(() => {
       // Phase 2: swap content and fade in new bubble
       setDisplayedBubble(bubble);
-      setBubblePhase("in");
-
-      const inTimer = setTimeout(() => {
+      if (bubble) {
+        setBubblePhase("in");
+        const inTimer = setTimeout(() => {
+          setBubblePhase("visible");
+        }, 350);
+        return () => clearTimeout(inTimer);
+      } else {
         setBubblePhase("visible");
-      }, 350);
-
-      return () => clearTimeout(inTimer);
+      }
     }, 300);
 
     return () => clearTimeout(outTimer);
@@ -80,11 +98,23 @@ const RafaCard = ({
   const bubbleTransformStyle = (() => {
     switch (bubblePhase) {
       case "out":
-        return { opacity: 0, transform: "translateY(-12px) scaleY(0.92)", transition: "opacity 0.3s ease, transform 0.3s ease" };
+        return {
+          opacity: 0,
+          transform: "translateY(-12px) scaleY(0.92)",
+          transition: "opacity 0.3s ease, transform 0.3s ease",
+        };
       case "in":
-        return { opacity: 1, transform: "translateY(0px) scaleY(1)", transition: "opacity 0.35s ease, transform 0.35s ease" };
+        return {
+          opacity: 1,
+          transform: "translateY(0px) scaleY(1)",
+          transition: "opacity 0.35s ease, transform 0.35s ease",
+        };
       default:
-        return { opacity: 1, transform: "translateY(0px) scaleY(1)", transition: "opacity 0.35s ease, transform 0.35s ease" };
+        return {
+          opacity: 1,
+          transform: "translateY(0px) scaleY(1)",
+          transition: "opacity 0.35s ease, transform 0.35s ease",
+        };
     }
   })();
 
@@ -183,6 +213,25 @@ const RafaCard = ({
     </div>
   );
 
+  if (dismissed) return null;
+
+  const handleDismiss = () => {
+    setDismissing(true);
+    setTimeout(() => setDismissed(true), 600);
+  };
+
+  const dismissStyle = dismissing
+    ? {
+        transform: "scale(0)",
+        opacity: 0,
+        transition: "transform 0.5s ease-in, opacity 0.5s ease-in",
+      }
+    : {
+        transform: `scale(${scale})`,
+        opacity: scale,
+        transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
+      };
+
   return (
     <div
       ref={cardRef}
@@ -190,14 +239,14 @@ const RafaCard = ({
       style={{
         width: "60px",
         height: "60px",
-        transform: `scale(${scale})`,
-        opacity: scale,
+        ...dismissStyle,
         transformOrigin: "center center",
-        transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
       }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       {/* Bubble - absolutely positioned */}
-      {bubblePosition === "above" && (
+      {!dismissing && bubblePosition === "above" && (
         <div
           className="absolute bottom-full left-0 mb-7"
           style={{
@@ -213,14 +262,26 @@ const RafaCard = ({
 
       {/* Rafa card */}
       <div
-        className={
+        className={`relative ${
           cardClassName ||
           "bg-white border border-[#cccccc] border-r-[10px] border-b-[4px] rounded-none shadow-sm p-3 flex flex-col items-center w-full h-full"
-        }
+        }`}
         style={cardStyle}
       >
-        <div className="flex flex-col items-center justify-center select-none h-full" style={{ color: "#aaa" }}>
-          {bubble ? (
+        <div
+          className="flex flex-col items-center justify-center select-none h-full"
+          style={{
+            color: "#aaa",
+            marginLeft: bubbleBorderSide === "left" ? "4px" : undefined,
+            marginRight: bubbleBorderSide === "right" ? "4px" : undefined,
+          }}
+        >
+          {dismissing ? (
+            <>
+              <span className="text-xs tracking-[0.3em]">x x</span>
+              <span className="text-xs">.</span>
+            </>
+          ) : bubble ? (
             <>
               <span className="text-xs tracking-[0.3em]">° °</span>
               <span className="text-xs">O</span>
@@ -232,10 +293,30 @@ const RafaCard = ({
             </>
           )}
         </div>
+
+        {/* Close button */}
+        <button
+          type="button"
+          aria-label="Dismiss assistant"
+          onClick={handleDismiss}
+          className="absolute cursor-pointer bg-transparent border-none p-0"
+          style={{
+            bottom: "-8px",
+            ...(bubbleBorderSide === "left"
+              ? { left: "-16px" }
+              : { right: "-16px" }),
+            zIndex: 30,
+            opacity: hovered && !dismissing ? 1 : 0,
+            transition: "opacity 0.2s ease",
+            pointerEvents: hovered && !dismissing ? "auto" : "none",
+          }}
+        >
+          <IoCloseCircle size={22} color="#000" />
+        </button>
       </div>
 
       {/* Bubble - below */}
-      {bubblePosition === "below" && (
+      {!dismissing && bubblePosition === "below" && (
         <div
           className="absolute top-full left-0 mt-7"
           style={{

@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
-import { Github, Linkedin, Menu, X, Settings, FileCode, Gamepad2 } from "lucide-react";
+import { Github, Linkedin, Menu, X, Settings, FileCode, Gamepad2, UserRoundX, UserRound } from "lucide-react";
 import { MdOutlineVideogameAsset } from "react-icons/md";
 import { RiCellphoneLine } from "react-icons/ri";
 import { FiDownload } from "react-icons/fi";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { useRafaCard } from "./RafaCardContext";
 
 function scrollToSection(sectionId: string, closeMenu?: () => void) {
   if (closeMenu) {
@@ -26,6 +27,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { visible } = useScrollDirection();
+  const rafaCard = useRafaCard();
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const closeSettings = useCallback(() => setSettingsOpen(false), []);
@@ -265,6 +267,14 @@ export default function Navbar() {
               <FileCode size={22} />
               Turn Off JavaScript
             </a>
+            <button
+              onClick={() => { rafaCard.toggle(); closeSettings(); }}
+              className="flex items-center gap-3 text-xl font-semibold ubuntu-font bg-transparent border-none cursor-pointer transition-colors duration-200 hover:text-primary"
+              style={{ color: "#888a8f" }}
+            >
+              {rafaCard.visible ? <UserRoundX size={22} /> : <UserRound size={22} />}
+              {rafaCard.visible ? "Turn Off Assistant" : "Turn On Assistant"}
+            </button>
             <div
               className="flex flex-col items-center gap-1"
               style={{ opacity: 0.4 }}

@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import RafaCard from "./RafaCard";
+import { useRafaCard } from "./RafaCardContext";
 
 const ECommerceHero = () => {
+  const { visible: rafaVisible } = useRafaCard();
   const [hovered, setHovered] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [hoveredTip, setHoveredTip] = useState<{
@@ -40,6 +42,10 @@ const ECommerceHero = () => {
 
   const handleMouseEnter = () => {
     setAnimate(true);
+    setHoveredTip({
+      title: "React Storefront",
+      description: "Built React storefront using Firebase and Stripe. Leveraged workforce management best practices to enhance productivity and resource allocation in UI/UX.",
+    });
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
     hoverTimeout.current = setTimeout(() => {
       setHovered(true);
@@ -48,6 +54,7 @@ const ECommerceHero = () => {
 
   const handleMouseLeave = () => {
     setAnimate(false);
+    setHoveredTip(null);
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
     setHovered(false);
   };
@@ -58,6 +65,7 @@ const ECommerceHero = () => {
       style={{ background: "#63666a" }}
     >
       {/* Rafa - top left */}
+      {rafaVisible && (
       <div className="absolute bottom-50 left-72 z-20">
         <RafaCard
           bubble={hoveredTip}
@@ -67,6 +75,7 @@ const ECommerceHero = () => {
           cardClassName="bg-white border border-[#999999] border-l-[10px] border-b-[5px] border-r-0 rounded-none shadow-sm p-3 flex flex-col items-center w-full h-full"
         />
       </div>
+      )}
 
       <div className="container mx-auto px-4 flex flex-col items-center">
         {/* 3D angled image + reflection + title card */}
