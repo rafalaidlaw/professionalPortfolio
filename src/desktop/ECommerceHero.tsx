@@ -64,15 +64,15 @@ const ECommerceHero = () => {
       className="w-full pt-32 pb-20 relative"
       style={{ background: "#63666a" }}
     >
-      {/* Rafa - top left */}
+      {/* Rafa - bottom right */}
       {rafaVisible && (
-      <div className="absolute bottom-50 left-72 z-20">
+      <div className="absolute bottom-50 z-20" style={{ right: "clamp(16px, calc(16px + (100vw - 768px) * 272 / 768), 288px)" }}>
         <RafaCard
           bubble={hoveredTip}
           bubblePosition="above"
-          bubbleBorderSide="left"
+          bubbleBorderSide="right"
           bubbleBorderColor="#999999"
-          cardClassName="bg-white border border-[#999999] border-l-[10px] border-b-[5px] border-r-0 rounded-none shadow-sm p-3 flex flex-col items-center w-full h-full"
+          cardClassName="bg-white border border-[#999999] border-r-[10px] border-b-[5px] border-l-0 rounded-none shadow-sm p-3 flex flex-col items-center w-full h-full"
         />
       </div>
       )}
@@ -142,7 +142,7 @@ const ECommerceHero = () => {
             className="absolute top-14 px-4 py-2 rounded-none text-left"
             style={{
               background: "#ededed",
-              right: "-440px",
+              right: "clamp(-440px, calc(-60px - (100vw - 768px) * 380 / 768), -60px)",
               borderRight: "10px solid #999999",
               borderBottom: "5px solid #999999",
               transform: `scale(${titleScale})`,

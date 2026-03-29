@@ -171,8 +171,9 @@ const BannerAdsHero = () => {
         {/* Title card - left positioned (scroll-based scale) */}
         <div
           ref={titleRef}
-          className="absolute top-10 left-72 z-20"
+          className="absolute top-10 z-20"
           style={{
+            left: "clamp(16px, calc(16px + (100vw - 768px) * 272 / 768), 288px)",
             transform: `scale(${titleScale})`,
             transformOrigin: "center center",
             transition: "transform 0.12s ease-out",
@@ -197,7 +198,7 @@ const BannerAdsHero = () => {
         </div>
         {/* Rafa */}
         {rafaVisible && (
-        <div className="absolute bottom-10 right-72 z-20">
+        <div className="absolute bottom-10 z-20" style={{ right: "clamp(16px, calc(16px + (100vw - 768px) * 272 / 768), 288px)" }}>
           <RafaCard
             bubble={sectionHovered ? {
               title: "Banner Ads",

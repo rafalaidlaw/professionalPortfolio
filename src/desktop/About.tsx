@@ -101,8 +101,9 @@ const About = () => {
         {/* Open Source Contributions label - left */}
         <div
           ref={ossRef}
-          className="absolute left-16 top-1/5 z-10 bg-white border border-[#cccccc] rounded-none shadow-sm flex items-center justify-center ubuntu-font"
+          className="absolute top-1/5 z-10 bg-white border border-[#cccccc] rounded-none shadow-sm flex items-center justify-center ubuntu-font"
           style={{
+            left: "clamp(-80px, calc(-80px + (100vw - 768px) * 144 / 512), 64px)",
             width: "160px",
             height: "160px",
             borderLeftWidth: "10px",
@@ -125,8 +126,9 @@ const About = () => {
         {/* Rafa card - bottom right */}
         {rafaVisible && (
         <div
-          className="absolute bottom-34 right-24 z-10"
+          className="absolute bottom-14 z-10"
           style={{
+            right: "clamp(16px, calc(16px + (100vw - 768px) * 80 / 512), 96px)",
             opacity: ossReady ? 1 : 0,
             transition: "opacity 0.5s ease-out",
           }}
