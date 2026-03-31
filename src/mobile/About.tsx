@@ -47,7 +47,7 @@ const About = () => {
         {/* About Text */}
         <div className="flex items-center px-1">
           <p className="text-sm ubuntu-font text-gray-700 leading-relaxed text-center">
-            I have contributed to open source projects such as Altair GraphQL,
+            I've contributed to open source projects such as Altair GraphQL,
             Hoppscotch, Godot Engine and Mermaid-js. Experience with AI as a
             Javascript trainer for Outlier AI. I spent 3 years developing banner
             ads for Publicis and Tribal DDB. I recently finished building a

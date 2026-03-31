@@ -41,7 +41,7 @@ const Profile = () => {
         <div className="h-24 border-l-2 border-gray-300 mx-0" />
         <div className="flex-1 flex items-center h-24 pl-6">
           <p className="text-sm ubuntu-font text-gray-700 leading-relaxed text-left">
-            I have contributed to open source projects such as Altair GraphQL,
+            I've contributed to open source projects such as Altair GraphQL,
             Hoppscotch, Godot Engine and Mermaid-js. Experience with AI as a
             Javascript trainer for Outlier AI. I spent 3 years developing banner
             ads for Publicis and Tribal DDB. I recently finished building a
