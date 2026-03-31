@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Github, Linkedin, Menu, X, Settings, FileCode, Gamepad2, UserRoundX, UserRound } from "lucide-react";
-import { MdOutlineVideogameAsset } from "react-icons/md";
+import { Github, Linkedin, Menu, X, Settings, FileCode, Gamepad2, UserRoundX, UserRound, PenLine } from "lucide-react";
 import { RiCellphoneLine } from "react-icons/ri";
 import { FiDownload } from "react-icons/fi";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
@@ -148,18 +147,11 @@ export default function Navbar() {
           {/* Nav items */}
           <div className="flex-1 flex flex-col items-center justify-center gap-5">
             <button
-              onClick={() => scrollToSection("about", closeMenu)}
+              onClick={() => scrollToSection("profile", closeMenu)}
               className="text-xl font-semibold ubuntu-font bg-transparent border-none cursor-pointer transition-colors duration-200 hover:text-primary"
               style={{ color: "#888a8f" }}
             >
               About
-            </button>
-            <button
-              onClick={() => scrollToSection("projects", closeMenu)}
-              className="text-xl font-semibold ubuntu-font bg-transparent border-none cursor-pointer transition-colors duration-200 hover:text-primary"
-              style={{ color: "#888a8f" }}
-            >
-              Projects
             </button>
             <button
               onClick={() => scrollToSection("contact", closeMenu)}
@@ -168,13 +160,14 @@ export default function Navbar() {
             >
               Contact
             </button>
-            <button
-              onClick={() => scrollToSection("games", closeMenu)}
-              className="flex items-center gap-2 text-xl font-semibold ubuntu-font bg-transparent border-none cursor-pointer transition-colors duration-200 hover:text-primary"
+            <a
+              href="/blog"
+              onClick={closeMenu}
+              className="flex items-center gap-2 text-xl font-semibold ubuntu-font no-underline transition-colors duration-200 hover:text-primary"
               style={{ color: "#888a8f" }}
             >
-              Games <MdOutlineVideogameAsset size={22} />
-            </button>
+              Blog <PenLine size={20} />
+            </a>
             <a
               href="https://github.com/rafalaidlaw"
               target="_blank"

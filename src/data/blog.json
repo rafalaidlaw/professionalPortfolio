@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "building-my-portfolio",
+    "title": "Building My Portfolio with React 19 and Vite",
+    "date": "2026-03-29",
+    "excerpt": "A walkthrough of the decisions behind my professional portfolio — from 3D CSS carousels to scroll-driven animations.",
+    "tags": ["react", "vite", "portfolio"],
+    "content": "When I set out to rebuild my portfolio, I wanted it to feel alive. Not just a static list of projects, but something that responded to the viewer. I chose React 19 with Vite for the build tooling and Tailwind CSS for styling.\n\nThe first challenge was creating scroll-driven animations that felt natural. Using viewport-relative thresholds and CSS transforms, each section element scales and fades based on its position in the viewport.\n\nThe banner ads section features a 3D CSS cylinder carousel — no libraries, just CSS perspective and rotateY transforms. Each slide rotates into view while the previous one rotates away, with only the center slide playing its animated GIF.\n\nOne of the more fun additions was the RafaCard assistant — a tiny character that reacts to user interactions with speech bubbles and can even be \"dismissed\" with a death animation complete with halo and angel wings."
+  }
+]

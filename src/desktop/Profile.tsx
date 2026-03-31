@@ -12,7 +12,7 @@ const Profile = () => {
   const handleMouseLeave = () => { setHoverText(DEFAULT_TAGLINE); };
 
   return (
-    <section className="container mx-auto px-4">
+    <section id="profile" className="container mx-auto px-4">
       {/* Identity Row: Skill Cube | Name/Title | Divider | About Text */}
       <div className="flex flex-row items-center gap-4 mb-4 rounded-lg p-3 w-full mt-8">
         <div className="flex-shrink-0 flex items-center justify-center w-24 h-24 pr-6">
