@@ -93,7 +93,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="container mx-auto px-4 pt-16 overflow-visible"
+      className="container mx-auto px-4 pt-28 overflow-visible"
       style={{ paddingBottom: "clamp(40px, 8vh, 120px)" }}
     >
       {/* ThreeJS Bubble App */}

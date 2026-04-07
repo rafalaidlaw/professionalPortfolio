@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react"
 import Navbar from "./Navbar"
 import About from "./About.tsx"
-import { Separator } from "@/components/ui/separator"
-import Games from "./Games"
-import FeaturedProjects from "./FeaturedProjects"
+import GamesHero from "./GamesHero"
+import OutlierAIHero from "./OutlierAIHero"
 // import BattleSwitchPrototype from "./battleSwitchPrototype"
 // import BattlePrototype from "./battlePrototype"
 import ECommerceHero from "./ECommerceHero"
 import BannerAdsHero from "./BannerAdsHero"
+import MotionGraphicsHero from "./MotionGraphicsHero"
+import PixiSlotsHero from "./PixiSlotsHero"
+import ThreeJSHero from "./ThreeJSHero"
 import Profile from "./Profile"
 import Contact from "./Contact"
 import BoringSection from "./BoringSection"
@@ -66,18 +68,15 @@ function DesktopApp() {
 
           <BannerAdsHero />
 
-          <div className="mt-16">
-            <Separator />
+          <ThreeJSHero />
 
-            {/* Projects Section */}
-            <FeaturedProjects />
-          </div>
+          <MotionGraphicsHero />
 
-          <Separator />
+          <PixiSlotsHero />
 
-          <Games />
+          <OutlierAIHero />
 
-          <Separator />
+          <GamesHero />
 
           <Profile />
 
