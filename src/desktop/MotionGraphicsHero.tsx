@@ -215,9 +215,10 @@ const MotionGraphicsHero = () => {
               bubble={
                 sectionHovered
                   ? {
-                      title: "Motion Graphics",
-                      description:
-                        "Animation and motion graphics work including music videos shown at international festivals in Ottawa and Singapore.",
+                      title: hoveredIdx !== null ? animationProjects[hoveredIdx].title : "Motion Graphics",
+                      description: hoveredIdx !== null
+                        ? animationProjects[hoveredIdx].description
+                        : "Animation and motion graphics work including music videos shown at international festivals in Ottawa and Singapore.",
                     }
                   : null
               }
@@ -298,11 +299,6 @@ const MotionGraphicsHero = () => {
                   />
                 </article>
               </button>
-              {hoveredIdx === idx && (
-                <div className="absolute left-1/2 -translate-x-1/2 mt-2 z-50 bg-gray-800 text-gray-100 text-xs rounded px-3 py-2 shadow-lg ubuntu-font whitespace-pre-line w-64 text-center pointer-events-none">
-                  {project.description}
-                </div>
-              )}
             </div>
           ))}
         </div>
