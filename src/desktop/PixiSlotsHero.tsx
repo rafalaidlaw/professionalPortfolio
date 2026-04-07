@@ -36,7 +36,7 @@ const PixiSlotsHero = () => {
 
   return (
     <section
-      className="w-full py-10 relative"
+      className="w-full pt-32 pb-20 relative"
       style={{ background: "#333437" }}
       onMouseEnter={() => setSectionHovered(true)}
       onMouseLeave={() => setSectionHovered(false)}

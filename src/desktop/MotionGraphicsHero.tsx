@@ -176,7 +176,7 @@ const MotionGraphicsHero = () => {
 
   return (
     <section
-      className="w-full py-10 relative"
+      className="w-full pt-32 pb-20 relative"
       style={{ background: "#4a4d52" }}
       onMouseEnter={() => setSectionHovered(true)}
       onMouseLeave={() => setSectionHovered(false)}

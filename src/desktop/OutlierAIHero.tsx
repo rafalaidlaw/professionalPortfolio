@@ -99,7 +99,7 @@ const OutlierAIHero = () => {
                 className="w-10 h-10 mb-3"
                 style={{ filter: "grayscale(1)", transform: "scale(0.9)" }}
               />
-              <p className="text-sm ubuntu-font text-gray-200 leading-relaxed text-center">
+              <p className="text-sm ubuntu-font leading-relaxed text-center" style={{ color: "#55575b" }}>
                 Evaluate JavaScript-related datasets to train machine learning models for code
                 understanding and analysis. My role includes annotating code snippets, identifying
                 patterns, and creating training scenarios that help improve model performance.
